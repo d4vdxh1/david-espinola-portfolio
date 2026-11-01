@@ -24,9 +24,12 @@ Página de una sola vista con: presentación, proyectos, sección "sobre mí", e
 ├── data.js         # Datos de apoyo para SEO (no renderiza contenido)
 ├── foto.jpg        # Foto de perfil usada en el hero
 ├── img/
-│   ├── sigsol-1.jpg   # Captura: pantalla de inicio de sesión de SIGSOL
-│   ├── sigsol-2.jpg   # Captura: dashboard de SIGSOL
-│   └── sigsol-3.jpg   # Captura: formulario de nueva solicitud
+│   ├── sigsol-1.jpg     # Captura: pantalla de inicio de sesión de SIGSOL
+│   ├── sigsol-2.jpg     # Captura: dashboard de SIGSOL
+│   ├── sigsol-3.jpg     # Captura: formulario de nueva solicitud
+│   └── hekopora-1.jpg   # Captura: dashboard de Heko Porã
+├── video/
+│   └── hekopora-demo.mp4   # Video de demostración de Heko Porã (comprimido, ~740 KB)
 ├── cv-nestor-espinola.pdf   # TODO: agregar este archivo (CV descargable)
 └── README.md
 ```

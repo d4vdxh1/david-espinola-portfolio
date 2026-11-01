@@ -33,10 +33,10 @@ const SITE_DATA = {
       url: "" // TODO: agregar enlace a demo o repo cuando esté disponible
     },
     {
-      name: "Sistema de agendamiento y atención hospitalaria",
+      name: "Heko Porã · Sistema de agendamiento y atención hospitalaria",
       description:
         "Proyecto académico grupal para ordenar el agendamiento de turnos y la atención de pacientes.",
-      url: "" // TODO: agregar enlace a capturas o repo cuando esté disponible
+      url: "" // TODO: agregar enlace a repo cuando esté disponible
     }
   ]
 };

@@ -111,15 +111,15 @@
           <li>PHP</li><li>JavaScript</li><li>CSS</li><li>MySQL</li><li>Docker</li><li>Ubuntu Server</li>
         </ul>
         <div class="project-gallery" role="group" aria-label="Capturas de SIGSOL">
-          <img src="img/sigsol-1.jpg" alt="Pantalla de inicio de sesión de SIGSOL, con el panel de acceso y una vista de fondo del dashboard" loading="lazy" width="1000" height="495" />
+          <img src="img/sigsol-1.jpg" alt="Pantalla de inicio de sesión de SIGSOL, con el panel de acceso y una vista de fondo del dashboard" loading="lazy" width="1000" height="494" />
           <img src="img/sigsol-2.jpg" alt="Dashboard de SIGSOL con solicitudes finalizadas, actualizadas, creadas y el resumen de estado por formulario" loading="lazy" width="1000" height="492" />
-          <img src="img/sigsol-3.jpg" alt="Formulario de nueva solicitud de soporte informático dentro de SIGSOL" loading="lazy" width="1000" height="899" />
+          <img src="img/sigsol-3.jpg" alt="Formulario de nueva solicitud de soporte informático dentro de SIGSOL" loading="lazy" width="977" height="877" />
         </div>
       </article>
 
       <article class="project-card reveal">
         <div class="project-top">
-          <div><p class="project-kind">Proyecto académico grupal · 4.º semestre</p><h3>Sistema de agendamiento y atención hospitalaria</h3></div>
+          <div><p class="project-kind">Proyecto académico grupal · 4.º semestre</p><h3>Heko Porã · Sistema de agendamiento y atención hospitalaria</h3></div>
           <div class="project-links">
             <span class="disabled" aria-hidden="true">Demo</span>
             <!-- TODO: agregar enlace al repositorio del equipo si está disponible -->
@@ -127,13 +127,19 @@
           </div>
         </div>
         <dl>
-          <div class="project-field"><dt>Problema que resuelve</dt><dd>Ordenar el agendamiento de turnos y la atención de pacientes en un entorno hospitalario.</dd></div>
+          <div class="project-field"><dt>Problema que resuelve</dt><dd>Ordenar el agendamiento de turnos y la atención de pacientes en un entorno hospitalario: turnos, pacientes, profesionales y coberturas desde un mismo panel.</dd></div>
           <div class="project-field"><dt>Mi rol</dt><dd>Lideré el diseño del frontend y la integración con las APIs del backend, además de colaborar en el modelado de la base de datos y las validaciones.</dd></div>
         </dl>
         <ul class="project-stack" aria-label="Tecnologías">
           <li>HTML5</li><li>JavaScript</li><li>Bootstrap</li><li>Node.js</li><li>Sybase SQL Anywhere</li>
         </ul>
-        <p class="project-note">Proyecto académico en equipo de tres integrantes. Completar con capturas si se pueden compartir.</p>
+        <div class="project-gallery" role="group" aria-label="Capturas y video de Heko Porã">
+          <img src="img/hekopora-1.jpg" alt="Dashboard de Heko Porã con turnos agendados, cancelados y atendidos, y gráficos por especialidad y cobertura" loading="lazy" width="1000" height="561" />
+          <button class="gallery-video-trigger" type="button" data-video="video/hekopora-demo.mp4" data-poster="img/hekopora-1.jpg" aria-label="Reproducir video de demostración de Heko Porã">
+            <img src="img/hekopora-1.jpg" alt="" loading="lazy" width="1000" height="561" />
+            <span class="play-icon" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M8 5v14l11-7z"/></svg></span>
+          </button>
+        </div>
       </article>
     </div>
   </section>
@@ -328,6 +334,13 @@
   <p>Soporte IT · Desarrollo de software · Asunción, Paraguay</p>
   <p>© <span id="year">2026</span></p>
 </footer>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Vista ampliada" hidden>
+  <button class="lightbox-close" id="lightbox-close" type="button" aria-label="Cerrar">
+    <svg class="icon" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>
+  </button>
+  <div class="lightbox-content" id="lightbox-content"></div>
+</div>
 
 <script src="data.js"></script>
 <script src="app.js"></script>

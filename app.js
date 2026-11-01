@@ -68,6 +68,60 @@ document.addEventListener("DOMContentLoaded", () => {
     update();
   }
 
+  // Lightbox: amplía capturas y reproduce el video al hacer click.
+  const lightbox = document.getElementById("lightbox");
+  const lightboxContent = document.getElementById("lightbox-content");
+  const lightboxClose = document.getElementById("lightbox-close");
+  let lastFocused = null;
+
+  function openLightbox(node) {
+    lastFocused = document.activeElement;
+    lightboxContent.innerHTML = "";
+    lightboxContent.appendChild(node);
+    lightbox.hidden = false;
+    lightboxClose.focus();
+    document.body.style.overflow = "hidden";
+  }
+  function closeLightbox() {
+    const video = lightboxContent.querySelector("video");
+    if (video) video.pause();
+    lightbox.hidden = true;
+    lightboxContent.innerHTML = "";
+    document.body.style.overflow = "";
+    if (lastFocused) lastFocused.focus();
+  }
+
+  document.querySelectorAll(".project-gallery > img").forEach((img) => {
+    img.setAttribute("tabindex", "0");
+    img.setAttribute("role", "button");
+    const open = () => {
+      const big = document.createElement("img");
+      big.src = img.src;
+      big.alt = img.alt;
+      openLightbox(big);
+    };
+    img.addEventListener("click", open);
+    img.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); } });
+  });
+
+  document.querySelectorAll(".gallery-video-trigger").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const video = document.createElement("video");
+      video.src = btn.dataset.video;
+      video.poster = btn.dataset.poster || "";
+      video.controls = true;
+      video.autoplay = true;
+      video.playsInline = true;
+      openLightbox(video);
+    });
+  });
+
+  if (lightboxClose) lightboxClose.addEventListener("click", closeLightbox);
+  if (lightbox) {
+    lightbox.addEventListener("click", (e) => { if (e.target === lightbox) closeLightbox(); });
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !lightbox.hidden) closeLightbox(); });
+  }
+
   // Datos estructurados (JSON-LD) para buscadores, a partir de data.js.
   // No afecta el contenido visible: solo ayuda a que Google entienda
   // quién sos y qué proyectos mostrás.
