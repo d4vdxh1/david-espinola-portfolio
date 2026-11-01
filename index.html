@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#060a16" />
+<meta name="description" content="Portafolio de Néstor David Espínola Delvalle: soporte IT, desarrollo de software, proyectos y trayectoria." />
+<title>Néstor David Espínola Delvalle — Portafolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<a class="sr-only skip-link" href="#main">Saltar al contenido</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="site-header">
+  <nav class="nav shell" aria-label="Navegación principal">
+    <a class="brand" href="#inicio"><span class="brand-mark">DE</span><span class="brand-name">DAVID ESPÍNOLA</span></a>
+    <button class="menu-toggle" id="menu-toggle" type="button" aria-controls="menu" aria-expanded="false">
+      <span class="sr-only">Abrir navegación</span>
+      <svg class="icon" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <div class="nav-links" id="menu">
+      <a href="#proyectos">Proyectos</a>
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#trayectoria">Trayectoria</a>
+      <a href="#habilidades">Habilidades</a>
+      <a class="nav-cta" href="#contacto">Contacto <svg class="icon sm" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+  <!-- Presentación -->
+  <section class="hero shell" id="inicio" aria-labelledby="hero-title">
+    <div class="hero-copy reveal">
+      <p class="eyebrow"><span class="pulse"></span>Soporte IT · Desarrollo de Software</p>
+      <h1 id="hero-title">Soporte IT y desarrollo de software con <em>propósito.</em></h1>
+      <p class="hero-intro">Construyo soluciones web, sistemas de gestión y herramientas que mejoran procesos reales. Actualmente curso Análisis de Sistemas y trabajo en soporte técnico.</p>
+      <p class="hero-summary">Diseño y desarrollo aplicaciones web, participo en proyectos de bases de datos y análisis de requerimientos, y utilizo herramientas de inteligencia artificial como apoyo al desarrollo. Me interesa seguir profundizando en ciberseguridad.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#proyectos">Ver proyectos <svg class="icon sm" viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a>
+        <!-- TODO: subir el archivo cv-nestor-espinola.pdf a la raíz del repositorio para que este botón funcione -->
+        <a class="btn btn-outline" href="cv-nestor-espinola.pdf" download>Descargar CV <svg class="icon sm" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg></a>
+      </div>
+      <div class="tech-row" aria-label="Tecnologías principales">
+        <span>React</span><span>Firebase</span><span>PHP</span><span>MySQL</span><span>Docker</span><span>Soporte IT</span>
+      </div>
+    </div>
+
+    <div class="id-card reveal" aria-label="Tarjeta de perfil">
+      <div class="id-top"><span>PERFIL</span><strong>v1.0</strong></div>
+      <div class="id-photo-wrap">
+        <img class="id-photo" src="foto.jpg" alt="Fotografía de Néstor David Espínola Delvalle" width="156" height="156" />
+      </div>
+      <p class="id-name">David Espínola</p>
+      <p class="id-role">Soporte IT · Desarrollo de Software</p>
+      <div class="id-meta">
+        <div class="id-chip"><p>Rol</p><strong>Help Desk + Dev</strong></div>
+        <div class="id-chip"><p>Semestre</p><strong>6.º · Análisis Sist.</strong></div>
+      </div>
+      <div class="id-footer">
+        <svg class="icon sm" viewBox="0 0 24 24"><path d="M12 21s-7-5.1-9.3-9A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.3 6c-2.3 3.9-9.3 9-9.3 9z"/></svg>
+        <span>Asunción, Paraguay</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Proyectos -->
+  <section class="section shell" id="proyectos" aria-labelledby="projects-title">
+    <div class="section-heading reveal">
+      <div><p class="eyebrow">02 — PROYECTOS</p><h2 id="projects-title">Soluciones construidas con <em>intención.</em></h2></div>
+      <p>Tres proyectos reales de desarrollo web, soporte técnico y bases de datos, cada uno con su estado, mi rol y las tecnologías usadas.</p>
+    </div>
+
+    <div class="project-list">
+      <article class="project-card reveal">
+        <div class="project-top">
+          <div><p class="project-kind">Sitio web · publicado y en funcionamiento</p><h3>AJAC · Plataforma web oficial</h3></div>
+          <div class="project-links">
+            <a href="https://ajac-website.web.app" target="_blank" rel="noreferrer">Ver demo <svg class="icon sm" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+            <!-- TODO: agregar enlace al repositorio si el código puede publicarse -->
+            <span class="disabled" aria-hidden="true">Repositorio</span>
+          </div>
+        </div>
+        <dl>
+          <div class="project-field"><dt>Problema que resuelve</dt><dd>Centraliza el calendario de eventos, la galería y las notificaciones de la organización en un solo sitio con panel de administración.</dd></div>
+          <div class="project-field"><dt>Mi rol</dt><dd>Responsable del desarrollo y la publicación completa del sitio.</dd></div>
+        </dl>
+        <ul class="project-stack" aria-label="Tecnologías">
+          <li>React</li><li>JavaScript</li><li>Tailwind CSS</li><li>Firebase</li><li>Cloudinary</li><li>OneSignal</li>
+        </ul>
+      </article>
+
+      <article class="project-card reveal">
+        <div class="project-top">
+          <div><p class="project-kind">Proyecto interno · etapa de pruebas</p><h3>Sistema de gestión de tickets de soporte</h3></div>
+          <div class="project-links">
+            <span class="disabled" aria-hidden="true">Demo</span>
+            <span class="disabled" aria-hidden="true">Repositorio</span>
+          </div>
+        </div>
+        <dl>
+          <div class="project-field"><dt>Problema que resuelve</dt><dd>Mejorar la gestión y trazabilidad de las solicitudes de soporte técnico interno.</dd></div>
+          <div class="project-field"><dt>Mi rol</dt><dd>Diseñé y desarrollé el sistema completo, y armé el entorno de pruebas; en preparación de un piloto con usuarios reales.</dd></div>
+        </dl>
+        <ul class="project-stack" aria-label="Tecnologías">
+          <li>PHP</li><li>JavaScript</li><li>CSS</li><li>MySQL</li><li>Docker</li><li>Ubuntu Server</li>
+        </ul>
+        <!-- TODO: agregar capturas de pantalla o un video corto, ya que el código es interno y no puede publicarse -->
+        <p class="project-note">Proyecto interno: aún sin capturas públicas. Completar con imágenes o un video corto cuando estén disponibles.</p>
+      </article>
+
+      <article class="project-card reveal">
+        <div class="project-top">
+          <div><p class="project-kind">Proyecto académico grupal · 4.º semestre</p><h3>Sistema de agendamiento y atención hospitalaria</h3></div>
+          <div class="project-links">
+            <span class="disabled" aria-hidden="true">Demo</span>
+            <!-- TODO: agregar enlace al repositorio del equipo si está disponible -->
+            <span class="disabled" aria-hidden="true">Repositorio</span>
+          </div>
+        </div>
+        <dl>
+          <div class="project-field"><dt>Problema que resuelve</dt><dd>Ordenar el agendamiento de turnos y la atención de pacientes en un entorno hospitalario.</dd></div>
+          <div class="project-field"><dt>Mi rol</dt><dd>Lideré el diseño del frontend y la integración con las APIs del backend, además de colaborar en el modelado de la base de datos y las validaciones.</dd></div>
+        </dl>
+        <ul class="project-stack" aria-label="Tecnologías">
+          <li>HTML5</li><li>JavaScript</li><li>Bootstrap</li><li>Node.js</li><li>Sybase SQL Anywhere</li>
+        </ul>
+        <p class="project-note">Proyecto académico en equipo de tres integrantes. Completar con capturas si se pueden compartir.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Sobre mí -->
+  <section class="section shell about-section" id="sobre-mi" aria-labelledby="about-title">
+    <div class="about-statement reveal">
+      <p class="eyebrow">03 — SOBRE MÍ</p>
+      <h2 id="about-title">Personas, sistemas y soluciones que <em>funcionan.</em></h2>
+      <p>Estudiante avanzado de Análisis de Sistemas con experiencia aplicada en soporte informático, mantenimiento de equipos y gestión de accesos. Combino el contacto con usuarios con la construcción de soluciones.</p>
+      <a class="btn btn-outline" href="#contacto">Conversemos <svg class="icon sm" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+    </div>
+    <div class="about-notes reveal">
+      <article class="about-note">
+        <div class="note-badge"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></div>
+        <div><p>Rol actual</p><strong>Help Desk · DIESA S.A.</strong></div>
+      </article>
+      <article class="about-note">
+        <div class="note-badge"><svg class="icon" viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5-10-5z"/><path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg></div>
+        <div><p>Formación</p><strong>Análisis de Sistemas · 6.º semestre</strong></div>
+      </article>
+      <article class="about-note">
+        <div class="note-badge"><svg class="icon" viewBox="0 0 24 24"><path d="M12 2l1.8 5.2L19 9l-5.2 1.8L12 16l-1.8-5.2L5 9l5.2-1.8z"/></svg></div>
+        <div><p>Intereses</p><strong>Desarrollo · IA · ciberseguridad</strong></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Experiencia y formación -->
+  <section class="section shell trajectory-section" id="trayectoria" aria-labelledby="trajectory-title">
+    <div class="section-heading compact reveal">
+      <div><p class="eyebrow">04 — EXPERIENCIA Y FORMACIÓN</p><h2 id="trajectory-title">Una trayectoria entre <em>servicio y tecnología.</em></h2></div>
+      <p>Experiencia en soporte IT, práctica técnica y formación continua en Análisis de Sistemas.</p>
+    </div>
+    <div class="trajectory-columns">
+      <div class="trajectory-column reveal">
+        <h3><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>Experiencia</h3>
+        <div class="timeline">
+          <article class="t-item">
+            <p class="t-period">Agosto de 2025 — Actualidad · Asunción</p>
+            <h4>Help Desk</h4>
+            <p class="t-org">DIESA S.A. · Departamento de Informática</p>
+            <p class="t-desc">Atención, resolución y derivación de incidentes y solicitudes de soporte, con seguimiento según los niveles de servicio establecidos.</p>
+            <ul>
+              <li>Diagnóstico, mantenimiento y reparación de equipos; apoyo en compras e inventario de hardware y licencias.</li>
+              <li>Gestión de cuentas y accesos de correo y dominio; administración de la consola de correo y licencias Microsoft.</li>
+              <li>Configuración de VPN e internet para sucursales, e instalación de SAP en equipos de usuarios.</li>
+              <li>Cumplimiento de procedimientos internos y aporte a la mejora continua del servicio y del Sistema de Gestión de Calidad.</li>
+            </ul>
+          </article>
+          <article class="t-item">
+            <p class="t-period">Diciembre de 2022 — Enero de 2023 · Asunción</p>
+            <h4>Pasantía de soporte técnico</h4>
+            <p class="t-org">DIESA S.A. · Help Desk</p>
+            <p class="t-desc">Control del inventario de equipos, mantenimiento preventivo de notebooks y computadoras, y preparación de equipos para el personal.</p>
+          </article>
+          <article class="t-item">
+            <p class="t-period">2022 · Asunción</p>
+            <h4>Prácticas de laboratorio de informática</h4>
+            <p class="t-org">Colegio Nacional Asunción Escalada</p>
+            <p class="t-desc">Ensamblaje y mantenimiento de computadoras, instalación de sistemas operativos y codificación de páginas y sitios web.</p>
+          </article>
+        </div>
+
+        <div class="other-builds">
+          <p>Otros desarrollos</p>
+          <ul>
+            <li>Sitio estático para venta de lotes.</li>
+            <li>Sistema académico de tickets con trazabilidad.</li>
+            <li>Integración de un modelo conversacional con PowerDesigner mediante MCP para consultar y modificar modelos de datos.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="trajectory-column reveal">
+        <h3><svg class="icon" viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5-10-5z"/><path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg>Formación académica</h3>
+        <div class="timeline">
+          <article class="t-item">
+            <p class="t-period">Marzo de 2024 — Actualidad</p>
+            <h4>Análisis de Sistemas</h4>
+            <p class="t-org">Universidad Católica de Asunción</p>
+            <p class="t-desc">6.º semestre</p>
+          </article>
+          <article class="t-item">
+            <p class="t-period">2023</p>
+            <h4>Bachiller Técnico en Informática</h4>
+            <p class="t-org">Colegio Nacional Asunción Escalada</p>
+            <p class="t-desc">Educación media</p>
+          </article>
+          <article class="t-item">
+            <p class="t-period">2020</p>
+            <h4>Educación Escolar Básica</h4>
+            <p class="t-org">Escuela Nuestra Señora del Perpetuo Socorro</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Habilidades -->
+  <section class="section shell" id="habilidades" aria-labelledby="skills-title">
+    <div class="section-heading compact reveal">
+      <div><p class="eyebrow">05 — CONOCIMIENTOS</p><h2 id="skills-title">Herramientas para <em>resolver.</em></h2></div>
+      <p>Desarrollo web, datos, soporte informático e inteligencia de negocios.</p>
+    </div>
+    <div class="skill-groups">
+      <article class="skill-card reveal">
+        <div class="skill-head"><svg class="icon" viewBox="0 0 24 24"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4"/></svg><h3>Desarrollo</h3></div>
+        <ul class="skill-tags">
+          <li>HTML5</li><li>CSS</li><li>JavaScript</li><li>PHP</li><li>Python</li><li>React</li><li>Node.js</li><li>Bootstrap</li><li>Java (básico)</li>
+        </ul>
+      </article>
+      <article class="skill-card reveal">
+        <div class="skill-head"><svg class="icon" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v6c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 11v6c0 1.66 4 3 9 3s9-1.34 9-3v-6"/></svg><h3>Datos e inteligencia de negocios</h3></div>
+        <ul class="skill-tags">
+          <li>SQL</li><li>MySQL</li><li>SQL Server</li><li>PostgreSQL</li><li>Sybase SQL Anywhere</li><li>Modelado relacional</li><li>Esquema estrella</li><li>Power BI</li>
+        </ul>
+      </article>
+      <article class="skill-card reveal">
+        <div class="skill-head"><svg class="icon" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.1-3.1a6 6 0 0 1-8 8l-6.6 6.6a2.1 2.1 0 0 1-3-3l6.6-6.6a6 6 0 0 1 8-8z"/></svg><h3>Herramientas e IA aplicada</h3></div>
+        <ul class="skill-tags">
+          <li>Git y GitHub</li><li>Docker</li><li>Ubuntu Server</li><li>PowerDesigner</li><li>VS Code</li><li>PyCharm (básico)</li><li>NetBeans (básico)</li><li>Dev. asistido por IA</li><li>MCP</li>
+        </ul>
+      </article>
+      <article class="skill-card reveal">
+        <div class="skill-head"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><h3>Ofimática y competencias</h3></div>
+        <ul class="skill-tags">
+          <li>Word</li><li>Excel</li><li>PowerPoint</li><li>Comunicación</li><li>Trabajo en equipo</li><li>Análisis</li><li>Responsabilidad</li><li>Puntualidad</li>
+        </ul>
+      </article>
+    </div>
+    <div class="lang-panel reveal">
+      <div><p class="eyebrow">IDIOMAS</p><h3>Comunicación en tres idiomas.</h3></div>
+      <div class="lang-list">
+        <div class="lang-item"><span>Español</span><strong>Fluido</strong></div>
+        <div class="lang-item"><span>Inglés</span><strong>Intermedio</strong></div>
+        <div class="lang-item"><span>Guaraní</span><strong>Intermedio</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reconocimientos -->
+  <section class="section shell" id="reconocimientos" aria-labelledby="recognitions-title">
+    <div class="section-heading compact reveal">
+      <div><p class="eyebrow">06 — RECONOCIMIENTOS</p><h2 id="recognitions-title">Aprendizaje y <em>mérito.</em></h2></div>
+      <p>Participaciones y becas recientes.</p>
+    </div>
+    <div class="rec-list">
+      <article class="rec-item reveal">
+        <div class="rec-badge"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5 7 21l5-3 5 3-1.5-8.5"/></svg></div>
+        <div><p class="rec-date">Octubre de 2026</p><h3>Hackathon de Inteligencia de Negocios e IA</h3><p>Participación certificada · 3.ª edición, Data Platform Paraguay</p></div>
+      </article>
+      <article class="rec-item reveal">
+        <div class="rec-badge"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5 7 21l5-3 5 3-1.5-8.5"/></svg></div>
+        <div><p class="rec-date">Marzo de 2024</p><h3>Beca del Programa de Becas del Gobierno del Paraguay / Itaipú</h3><p>Seleccionado tras cumplir los requisitos del programa</p></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section class="section shell" id="contacto" style="padding-bottom: 76px" aria-labelledby="contact-title">
+    <div class="contact-panel reveal">
+      <div class="contact-copy">
+        <p class="eyebrow">07 — CONTACTO</p>
+        <h2 id="contact-title">¿Hablamos del <em>siguiente</em> desafío?</h2>
+        <p>Disponible para conectar sobre soporte informático, desarrollo de software y proyectos tecnológicos.</p>
+        <a class="btn btn-primary" href="cv-nestor-espinola.pdf" download>Descargar CV <svg class="icon sm" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg></a>
+      </div>
+      <div class="contact-actions">
+        <a class="contact-link" href="mailto:davideesspinola@gmail.com">
+          <span><svg class="icon" viewBox="0 0 24 24"><path d="M3 6h18v12H3z"/><path d="M3 7l9 6 9-6"/></svg></span>
+          <span><strong>Correo</strong><small>davideesspinola@gmail.com</small></span>
+          <svg class="icon sm" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg>
+        </a>
+        <a class="contact-link" href="https://github.com/d4vdxh1" target="_blank" rel="noreferrer">
+          <span><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg></span>
+          <span><strong>GitHub</strong><small>github.com/d4vdxh1</small></span>
+          <svg class="icon sm" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg>
+        </a>
+        <a class="contact-link" href="https://www.linkedin.com/in/david-espínola-032148446" target="_blank" rel="noreferrer">
+          <span><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 11v6M8 8v.01M12 17v-4a2 2 0 0 1 4 0v4"/></svg></span>
+          <span><strong>LinkedIn</strong><small>David Espínola</small></span>
+          <svg class="icon sm" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer shell">
+  <div class="footer-brand"><span class="brand-mark" style="width:26px;height:26px;border-radius:8px;font-size:11px">DE</span><span>David Espínola Delvalle</span></div>
+  <p>Soporte IT · Desarrollo de software · Asunción, Paraguay</p>
+  <p>© <span id="year">2026</span></p>
+</footer>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
