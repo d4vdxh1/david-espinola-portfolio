@@ -27,10 +27,10 @@ const SITE_DATA = {
       url: "https://ajac-website.web.app"
     },
     {
-      name: "Sistema de gestión de tickets de soporte",
+      name: "SIGSOL · Sistema de gestión de tickets de soporte",
       description:
-        "Sistema interno para registrar, asignar y dar seguimiento a incidencias de soporte técnico.",
-      url: "" // TODO: agregar enlace a capturas o repo cuando esté disponible
+        "Sistema interno para registrar, asignar y dar seguimiento a incidencias y solicitudes de soporte técnico.",
+      url: "" // TODO: agregar enlace a demo o repo cuando esté disponible
     },
     {
       name: "Sistema de agendamiento y atención hospitalaria",
