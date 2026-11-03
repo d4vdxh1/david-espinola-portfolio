@@ -24,6 +24,55 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   }
 
+  // Selector de idioma (ES/EN). El español ya está en el HTML por defecto;
+  // el inglés vive en los atributos data-en / data-en-html / data-en-aria
+  // de cada elemento, así que no hace falta duplicar el contenido en JS.
+  const STORAGE_KEY = "de-portfolio-lang";
+  const langToggle = document.getElementById("lang-toggle");
+  const langLabel = document.getElementById("lang-toggle-label");
+
+  function applyLanguage(lang) {
+    document.documentElement.lang = lang;
+    if (langLabel) langLabel.textContent = lang === "es" ? "English" : "Español";
+    if (langToggle) langToggle.setAttribute("aria-label", lang === "es" ? "Switch site language to English" : "Cambiar idioma del sitio a español");
+
+    document.querySelectorAll("[data-en]").forEach((el) => {
+      if (!el.dataset.es) el.dataset.es = el.textContent;
+      el.textContent = lang === "en" ? el.dataset.en : el.dataset.es;
+    });
+    document.querySelectorAll("[data-en-html]").forEach((el) => {
+      if (!el.dataset.esHtml) el.dataset.esHtml = el.innerHTML;
+      el.innerHTML = lang === "en" ? el.dataset.enHtml : el.dataset.esHtml;
+    });
+    document.querySelectorAll("[data-en-aria]").forEach((el) => {
+      if (!el.dataset.esAria) el.dataset.esAria = el.getAttribute("aria-label") || "";
+      el.setAttribute("aria-label", lang === "en" ? el.dataset.enAria : el.dataset.esAria);
+    });
+
+    const titleEl = document.getElementById("document-title");
+    if (titleEl) {
+      if (!titleEl.dataset.esTitle) titleEl.dataset.esTitle = titleEl.textContent;
+      const newTitle = lang === "en" ? titleEl.dataset.en : titleEl.dataset.esTitle;
+      titleEl.textContent = newTitle;
+      document.title = newTitle;
+    }
+    const descEl = document.getElementById("meta-description");
+    if (descEl) {
+      if (!descEl.dataset.esDescription) descEl.dataset.esDescription = descEl.getAttribute("content");
+      descEl.setAttribute("content", lang === "en" ? descEl.dataset.en : descEl.dataset.esDescription);
+    }
+  }
+
+  if (langToggle) {
+    let currentLang = localStorage.getItem(STORAGE_KEY) || "es";
+    applyLanguage(currentLang);
+    langToggle.addEventListener("click", () => {
+      currentLang = currentLang === "es" ? "en" : "es";
+      localStorage.setItem(STORAGE_KEY, currentLang);
+      applyLanguage(currentLang);
+    });
+  }
+
   // Año actual en el pie de página
   const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
