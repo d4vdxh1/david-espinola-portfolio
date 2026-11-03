@@ -222,6 +222,21 @@ document.addEventListener("DOMContentLoaded", () => {
     else closeTimer = setTimeout(finish, 230);
   }
 
+  // AJAC: mostrar la captura auténtica si existe; si aún no se subió,
+  // conservar la maqueta previa como alternativa, sin imagen rota.
+  const ajacScreenshot = document.querySelector("[data-ajac-screenshot]");
+  if (ajacScreenshot) {
+    const ajacVisual = ajacScreenshot.closest(".project-visual--ajac");
+    const updateAjacVisual = () => {
+      if (ajacVisual) {
+        ajacVisual.classList.toggle("has-ajac-image", ajacScreenshot.complete && ajacScreenshot.naturalWidth > 0);
+      }
+    };
+    ajacScreenshot.addEventListener("load", updateAjacVisual);
+    ajacScreenshot.addEventListener("error", updateAjacVisual);
+    updateAjacVisual();
+  }
+
   // Galerías de casos reales: un visor grande y miniaturas sin superposición.
   // Se respeta el texto accesible en ambos idiomas.
   const showcaseGalleries = document.querySelectorAll(".showcase-gallery");
