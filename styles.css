@@ -1378,3 +1378,23 @@ h2 em { color: #86c5ff; }
 @media (prefers-reduced-motion: reduce) {
  .hero-halo, .hero-spark { animation:none; }
 }
+
+
+/* V4 intro timing: content arrives in one coherent, subtle sequence. */
+@media (prefers-reduced-motion: no-preference) {
+  .js .hero-content.is-visible .hero-status,
+  .js .hero-content.is-visible h1,
+  .js .hero-content.is-visible .hero-intro,
+  .js .hero-content.is-visible .hero-actions,
+  .js .hero-content.is-visible .hero-credentials {
+    animation: centered-hero-enter .68s cubic-bezier(.23,1,.32,1) both;
+  }
+  .js .hero-content.is-visible h1 { animation-delay:.06s; }
+  .js .hero-content.is-visible .hero-intro { animation-delay:.13s; }
+  .js .hero-content.is-visible .hero-actions { animation-delay:.2s; }
+  .js .hero-content.is-visible .hero-credentials { animation-delay:.28s; }
+  @keyframes centered-hero-enter {
+    from { opacity:0; transform:translateY(17px); }
+    to { opacity:1; transform:translateY(0); }
+  }
+}
