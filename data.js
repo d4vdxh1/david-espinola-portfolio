@@ -1,42 +1,21 @@
-/**
- * data.js
- * Datos estructurados reutilizados por app.js para generar metadatos SEO
- * (JSON-LD). El contenido visible del sitio vive directamente en index.html
- * para que la página funcione igual con o sin JavaScript; este archivo NO
- * renderiza contenido, solo evita repetir los mismos enlaces dos veces.
- *
- * Si cambiás un enlace de contacto o agregás un proyecto con demo pública,
- * actualizá también acá para que el SEO quede consistente con la página.
- */
+/* Structured metadata only; visible content is maintained in index.html. */
 const SITE_DATA = {
   person: {
-    name: "Néstor David Espínola Delvalle",
-    jobTitle: "Soporte IT · Desarrollo de Software",
-    url: "https://d4vdxh1.github.io/david-espinola-portfolio/", // TODO: confirmar URL final de GitHub Pages
+    name: "David Espínola",
+    jobTitle: "IT Support Specialist · Software Development · Systems Analysis Student",
+    url: "https://d4vdxh1.github.io/david-espinola-portfolio/",
     email: "mailto:davideesspinola@gmail.com",
     sameAs: [
       "https://github.com/d4vdxh1",
-      "https://www.linkedin.com/in/david-espínola-032148446"
+      "https://www.linkedin.com/in/david-esp%C3%ADnola-032148446/"
     ]
   },
   projects: [
-    {
-      name: "AJAC · Plataforma web oficial",
-      description:
-        "Plataforma web con calendario interactivo, galería multimedia, notificaciones push y panel de administración.",
-      url: "https://ajac-website.web.app"
-    },
-    {
-      name: "SIGSOL · Sistema de gestión de tickets de soporte",
-      description:
-        "Sistema interno para registrar, asignar y dar seguimiento a incidencias y solicitudes de soporte técnico.",
-      url: "" // TODO: agregar enlace a demo o repo cuando esté disponible
-    },
-    {
-      name: "Heko Porã · Sistema de agendamiento y atención hospitalaria",
-      description:
-        "Proyecto académico grupal para ordenar el agendamiento de turnos y la atención de pacientes.",
-      url: "" // TODO: agregar enlace a repo cuando esté disponible
-    }
+    { name: "AJAC", description: "Plataforma web publicada con actividades, calendario, galería y notificaciones.", url: "https://ajac-website.web.app/" },
+    { name: "SIGSOL", description: "Sistema interno de gestión de tickets de soporte, en pruebas.", url: "" },
+    { name: "PowerDesigner MCP", description: "Integración local de PowerDesigner con ChatGPT, Python y COM.", url: "https://github.com/d4vdxh1/powerdesigner-mcp" },
+    { name: "Día a Día", description: "Aplicación personal para hábitos, objetivos y diario, en desarrollo.", url: "https://github.com/d4vdxh1/personal-ia" },
+    { name: "Heko Porã", description: "Proyecto académico de agendamiento y atención sanitaria.", url: "" },
+    { name: "Portfolio", description: "Portafolio profesional bilingüe publicado en GitHub Pages.", url: "https://d4vdxh1.github.io/david-espinola-portfolio/" }
   ]
 };

@@ -1,355 +1,248 @@
-/**
- * app.js
- * Comportamiento del sitio. El contenido ya está escrito en index.html:
- * este script solo agrega mejoras (menú móvil, animaciones suaves al
- * hacer scroll y datos estructurados para buscadores). Si JavaScript
- * está desactivado, la página sigue siendo completamente legible.
- */
-document.addEventListener("DOMContentLoaded", () => {
-  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+/* Portfolio interactions — no framework or external runtime required. */
+document.addEventListener("DOMContentLoaded", function () {
+  "use strict";
 
-  // Menú móvil: transiciones reversibles, salida con Escape y clic externo.
-  const menu = document.getElementById("menu");
-  const menuToggle = document.getElementById("menu-toggle");
-  if (menu && menuToggle) {
-    const setMenuOpen = (open) => {
-      menu.classList.toggle("open", open);
-      menuToggle.setAttribute("aria-expanded", String(open));
-    };
-    menuToggle.addEventListener("click", () => setMenuOpen(!menu.classList.contains("open")));
-    menu.querySelectorAll("a").forEach((link) =>
-      link.addEventListener("click", () => setMenuOpen(false))
-    );
-    document.addEventListener("pointerdown", (event) => {
-      if (menu.classList.contains("open") &&
-          !menu.contains(event.target) && !menuToggle.contains(event.target)) {
-        setMenuOpen(false);
+  const root = document.documentElement;
+  const langButton = document.getElementById("lang-toggle");
+  const langLabel = document.getElementById("lang-label");
+  const themeButton = document.getElementById("theme-toggle");
+  const themeIcon = themeButton ? themeButton.querySelector(".theme-icon") : null;
+  const menuButton = document.getElementById("menu-toggle");
+  const navLinks = document.getElementById("nav-links");
+  const dialog = document.getElementById("media-dialog");
+  const dialogContent = document.getElementById("dialog-content");
+  const dialogClose = document.getElementById("dialog-close");
+  const descriptionMeta = document.getElementById("meta-description");
+
+  function safeStore(key, value) {
+    try { localStorage.setItem(key, value); } catch (err) { /* storage may be disabled */ }
+  }
+  function safeLoad(key) {
+    try { return localStorage.getItem(key); } catch (err) { return null; }
+  }
+
+  let currentLang = safeLoad("de-portfolio-lang") === "en" ? "en" : "es";
+
+  function updateToolLabels() {
+    if (langButton) {
+      const toEnglish = currentLang === "es";
+      const label = toEnglish ? "Switch to English" : "Cambiar idioma a español";
+      langButton.setAttribute("aria-label", label);
+      langButton.title = label;
+      if (langLabel) langLabel.textContent = toEnglish ? "EN" : "ES";
+    }
+    const mode = root.dataset.theme === "light" ? "light" : "dark";
+    if (themeButton) {
+      const label = mode === "dark"
+        ? (currentLang === "es" ? "Activar modo claro" : "Switch to light mode")
+        : (currentLang === "es" ? "Activar modo oscuro" : "Switch to dark mode");
+      themeButton.title = label;
+      themeButton.setAttribute("aria-label", label);
+      if (themeIcon) themeIcon.textContent = mode === "dark" ? "☼" : "☾";
+    }
+    if (menuButton && navLinks) {
+      const open = navLinks.classList.contains("is-open");
+      menuButton.setAttribute("aria-label", currentLang === "es"
+        ? (open ? "Cerrar menú" : "Abrir menú")
+        : (open ? "Close menu" : "Open menu"));
+    }
+  }
+
+  function applyLanguage(lang) {
+    currentLang = lang;
+    root.lang = lang;
+    document.querySelectorAll("[data-en]").forEach(function (el) {
+      if (!Object.prototype.hasOwnProperty.call(el.dataset, "es")) {
+        el.dataset.es = el.textContent;
+      }
+      if (el !== descriptionMeta) {
+        el.textContent = lang === "en" ? el.dataset.en : el.dataset.es;
       }
     });
-    document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape" && menu.classList.contains("open")) {
-        setMenuOpen(false);
-        menuToggle.focus();
+    document.querySelectorAll("[data-en-html]").forEach(function (el) {
+      if (!Object.prototype.hasOwnProperty.call(el.dataset, "esHtml")) {
+        el.dataset.esHtml = el.innerHTML;
+      }
+      el.innerHTML = lang === "en" ? el.dataset.enHtml : el.dataset.esHtml;
+    });
+    document.querySelectorAll("[data-en-aria]").forEach(function (el) {
+      if (!Object.prototype.hasOwnProperty.call(el.dataset, "esAria")) {
+        el.dataset.esAria = el.getAttribute("aria-label") || "";
+      }
+      el.setAttribute("aria-label", lang === "en" ? el.dataset.enAria : el.dataset.esAria);
+    });
+    if (descriptionMeta) {
+      if (!Object.prototype.hasOwnProperty.call(descriptionMeta.dataset, "esContent")) {
+        descriptionMeta.dataset.esContent = descriptionMeta.getAttribute("content");
+      }
+      descriptionMeta.setAttribute("content", lang === "en"
+        ? descriptionMeta.dataset.en : descriptionMeta.dataset.esContent);
+    }
+    document.querySelectorAll("[data-preview]").forEach(function (button) {
+      if (button.dataset.alt && button.querySelector("img")) {
+        const innerImage = button.querySelector("img");
+        innerImage.alt = lang === "en" && button.dataset.enAlt
+          ? button.dataset.enAlt : button.dataset.alt;
       }
     });
-    window.addEventListener("resize", () => {
-      if (window.innerWidth > 760) setMenuOpen(false);
+    safeStore("de-portfolio-lang", lang);
+    updateToolLabels();
+  }
+
+  if (langButton) {
+    langButton.addEventListener("click", function () {
+      applyLanguage(currentLang === "es" ? "en" : "es");
+    });
+  }
+  applyLanguage(currentLang);
+
+  function applyTheme(next) {
+    const mode = next === "light" ? "light" : "dark";
+    root.dataset.theme = mode;
+    const themeMeta = document.querySelector('meta[name="theme-color"]');
+    if (themeMeta) themeMeta.content = mode === "dark" ? "#0c1017" : "#f7f8fa";
+    safeStore("de-portfolio-theme", mode);
+    updateToolLabels();
+  }
+  if (themeButton) {
+    themeButton.addEventListener("click", function () {
+      applyTheme(root.dataset.theme === "dark" ? "light" : "dark");
+    });
+  }
+  applyTheme(root.dataset.theme);
+
+  function setMenu(open) {
+    if (!navLinks || !menuButton) return;
+    navLinks.classList.toggle("is-open", Boolean(open));
+    menuButton.setAttribute("aria-expanded", String(Boolean(open)));
+    updateToolLabels();
+  }
+  if (menuButton && navLinks) {
+    menuButton.addEventListener("click", function () {
+      setMenu(!navLinks.classList.contains("is-open"));
+    });
+    navLinks.querySelectorAll("a").forEach(function (anchor) {
+      anchor.addEventListener("click", function () { setMenu(false); });
+    });
+    document.addEventListener("pointerdown", function (event) {
+      if (!navLinks.contains(event.target) && !menuButton.contains(event.target)) {
+        setMenu(false);
+      }
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && navLinks.classList.contains("is-open")) {
+        setMenu(false);
+        menuButton.focus();
+      }
+    });
+    window.addEventListener("resize", function () {
+      if (window.innerWidth > 700) setMenu(false);
     }, { passive: true });
   }
 
-  // Selector de idioma (ES/EN). El español ya está en el HTML por defecto;
-  // el inglés vive en los atributos data-en / data-en-html / data-en-aria
-  // de cada elemento, así que no hace falta duplicar el contenido en JS.
-  const STORAGE_KEY = "de-portfolio-lang";
-  const langToggle = document.getElementById("lang-toggle");
-  const langLabel = document.getElementById("lang-toggle-label");
-
-  function applyLanguage(lang) {
-    document.documentElement.lang = lang;
-    if (langLabel) langLabel.textContent = lang === "es" ? "English" : "Español";
-    if (langToggle) langToggle.setAttribute("aria-label", lang === "es" ? "Switch site language to English" : "Cambiar idioma del sitio a español");
-
-    document.querySelectorAll("[data-en]").forEach((el) => {
-      if (!el.dataset.es) el.dataset.es = el.textContent;
-      el.textContent = lang === "en" ? el.dataset.en : el.dataset.es;
-    });
-    document.querySelectorAll("[data-en-html]").forEach((el) => {
-      if (!el.dataset.esHtml) el.dataset.esHtml = el.innerHTML;
-      el.innerHTML = lang === "en" ? el.dataset.enHtml : el.dataset.esHtml;
-    });
-    document.querySelectorAll("[data-en-aria]").forEach((el) => {
-      if (!el.dataset.esAria) el.dataset.esAria = el.getAttribute("aria-label") || "";
-      el.setAttribute("aria-label", lang === "en" ? el.dataset.enAria : el.dataset.esAria);
-    });
-
-    document.querySelectorAll(".showcase-gallery").forEach((gallery) => {
-      gallery.dispatchEvent(new Event("portfolio:language"));
-    });
-
-    const titleEl = document.getElementById("document-title");
-    if (titleEl) {
-      if (!titleEl.dataset.esTitle) titleEl.dataset.esTitle = titleEl.textContent;
-      const newTitle = lang === "en" ? titleEl.dataset.en : titleEl.dataset.esTitle;
-      titleEl.textContent = newTitle;
-      document.title = newTitle;
-    }
-    const descEl = document.getElementById("meta-description");
-    if (descEl) {
-      if (!descEl.dataset.esDescription) descEl.dataset.esDescription = descEl.getAttribute("content");
-      descEl.setAttribute("content", lang === "en" ? descEl.dataset.en : descEl.dataset.esDescription);
-    }
-  }
-
-  if (langToggle) {
-    let currentLang = localStorage.getItem(STORAGE_KEY) || "es";
-    applyLanguage(currentLang);
-    langToggle.addEventListener("click", () => {
-      currentLang = currentLang === "es" ? "en" : "es";
-      localStorage.setItem(STORAGE_KEY, currentLang);
-      applyLanguage(currentLang);
-    });
-  }
-
-  // Año actual en el pie de página
-  const yearEl = document.getElementById("year");
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-  // Revelado una sola vez: sin parpadeo al volver a desplazarse.
-  if (!prefersReducedMotion && "IntersectionObserver" in window) {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
+  document.querySelectorAll("[data-gallery]").forEach(function (gallery) {
+    const image = gallery.querySelector(".gallery-main-image");
+    const mainButton = gallery.querySelector("[data-preview]");
+    const thumbs = gallery.querySelectorAll("[data-swap-src]");
+    if (!image || !mainButton || !thumbs.length) return;
+    thumbs.forEach(function (thumb) {
+      thumb.addEventListener("click", function () {
+        const source = thumb.dataset.swapSrc;
+        if (!source) return;
+        image.src = source;
+        image.alt = currentLang === "en" && thumb.dataset.enAlt
+          ? thumb.dataset.enAlt : thumb.dataset.alt || "";
+        mainButton.dataset.preview = source;
+        mainButton.dataset.alt = thumb.dataset.alt || "";
+        mainButton.dataset.enAlt = thumb.dataset.enAlt || "";
+        thumbs.forEach(function (t) {
+          t.classList.toggle("active", t === thumb);
+          t.setAttribute("aria-pressed", String(t === thumb));
         });
-      },
-      { threshold: 0.08, rootMargin: "0px 0px -5% 0px" }
-    );
-    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
-  } else {
-    document.querySelectorAll(".reveal").forEach((el) => el.classList.add("is-visible"));
-  }
-
-  // Barra de progreso de lectura (liviana: un solo transform, sin JS extra)
-  const progress = document.getElementById("progress");
-  if (progress) {
-    let ticking = false;
-    const update = () => {
-      const top = window.scrollY;
-      const height = document.documentElement.scrollHeight - window.innerHeight;
-      progress.style.transform = `scaleX(${height > 0 ? Math.min(1, Math.max(0, top / height)) : 0})`;
-      ticking = false;
-    };
-    window.addEventListener(
-      "scroll",
-      () => {
-        if (!ticking) {
-          requestAnimationFrame(update);
-          ticking = true;
-        }
-      },
-      { passive: true }
-    );
-    update();
-  }
-
-
-  // Indicador discreto de la sección que se está leyendo.
-  const sectionLinks = Array.from(document.querySelectorAll('.nav-links a[href^="#"]'));
-  if ("IntersectionObserver" in window && sectionLinks.length) {
-    const lookup = new Map(sectionLinks.map((link) => [link.getAttribute("href").slice(1), link]));
-    const activeObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        sectionLinks.forEach((link) => {
-          link.classList.remove("is-current");
-          link.removeAttribute("aria-current");
-        });
-        const active = lookup.get(entry.target.id);
-        if (active) {
-          active.classList.add("is-current");
-          active.setAttribute("aria-current", "location");
-        }
-      });
-    }, { rootMargin: "-28% 0px -60% 0px", threshold: 0 });
-    lookup.forEach((_, id) => {
-      const section = document.getElementById(id);
-      if (section) activeObserver.observe(section);
-    });
-  }
-
-  // Progreso de la trayectoria: solo transformaciones, sin bibliotecas.
-  const timelines = Array.from(document.querySelectorAll(".timeline"));
-  if (timelines.length && !prefersReducedMotion) {
-    let timelineQueued = false;
-    const drawTimelines = () => {
-      const viewportMark = window.innerHeight * 0.72;
-      timelines.forEach((timeline) => {
-        const rect = timeline.getBoundingClientRect();
-        const progressValue = Math.max(0, Math.min(1, (viewportMark - rect.top) / Math.max(rect.height, 1)));
-        timeline.style.setProperty("--line-progress", String(progressValue));
-      });
-      timelineQueued = false;
-    };
-    const queueTimelines = () => {
-      if (timelineQueued) return;
-      timelineQueued = true;
-      requestAnimationFrame(drawTimelines);
-    };
-    window.addEventListener("scroll", queueTimelines, { passive: true });
-    window.addEventListener("resize", queueTimelines, { passive: true });
-    queueTimelines();
-  }
-
-  // Lightbox: amplía capturas y reproduce el video al hacer click.
-  const lightbox = document.getElementById("lightbox");
-  const lightboxContent = document.getElementById("lightbox-content");
-  const lightboxClose = document.getElementById("lightbox-close");
-  let lastFocused = null;
-  let closeTimer = null;
-
-  function openLightbox(node) {
-    if (!lightbox || !lightboxContent || !lightboxClose) return;
-    if (closeTimer !== null) {
-      clearTimeout(closeTimer);
-      closeTimer = null;
-    }
-    lastFocused = document.activeElement;
-    lightboxContent.replaceChildren(node);
-    lightbox.hidden = false;
-    document.body.classList.add("lightbox-active");
-    requestAnimationFrame(() => {
-      if (!lightbox.hidden) lightbox.classList.add("is-open");
-    });
-    lightboxClose.focus();
-  }
-
-  function closeLightbox() {
-    if (!lightbox || lightbox.hidden) return;
-    const video = lightboxContent.querySelector("video");
-    if (video) video.pause();
-    lightbox.classList.remove("is-open");
-    const restoreFocus = lastFocused;
-    const finish = () => {
-      lightbox.hidden = true;
-      lightboxContent.replaceChildren();
-      document.body.classList.remove("lightbox-active");
-      if (restoreFocus && typeof restoreFocus.focus === "function") restoreFocus.focus();
-      closeTimer = null;
-    };
-    if (prefersReducedMotion) finish();
-    else closeTimer = setTimeout(finish, 230);
-  }
-
-  // AJAC: mostrar la captura auténtica si existe; si aún no se subió,
-  // conservar la maqueta previa como alternativa, sin imagen rota.
-  const ajacScreenshot = document.querySelector("[data-ajac-screenshot]");
-  if (ajacScreenshot) {
-    const ajacVisual = ajacScreenshot.closest(".project-visual--ajac");
-    const updateAjacVisual = () => {
-      if (ajacVisual) {
-        ajacVisual.classList.toggle("has-ajac-image", ajacScreenshot.complete && ajacScreenshot.naturalWidth > 0);
-      }
-    };
-    ajacScreenshot.addEventListener("load", updateAjacVisual);
-    ajacScreenshot.addEventListener("error", updateAjacVisual);
-    updateAjacVisual();
-  }
-
-  // Galerías de casos reales: un visor grande y miniaturas sin superposición.
-  // Se respeta el texto accesible en ambos idiomas.
-  const showcaseGalleries = document.querySelectorAll(".showcase-gallery");
-  showcaseGalleries.forEach((gallery) => {
-    const mainButton = gallery.querySelector(".showcase-main");
-    const mainImage = gallery.querySelector(".showcase-main-image");
-    const thumbnails = [...gallery.querySelectorAll(".showcase-thumb")];
-    const counter = gallery.querySelector(".showcase-count");
-    if (!mainButton || !mainImage) return;
-
-    const selectScreenshot = (index, moveFocus = false) => {
-      const thumb = thumbnails[index];
-      if (!thumb) return;
-      const lang = document.documentElement.lang === "en" ? "en" : "es";
-      mainImage.src = thumb.dataset.full;
-      mainImage.alt = thumb.dataset[lang === "en" ? "altEn" : "altEs"] || thumb.dataset.altEs || "";
-      thumbnails.forEach((other, otherIndex) => {
-        const active = otherIndex === index;
-        other.classList.toggle("is-active", active);
-        other.setAttribute("aria-pressed", String(active));
-      });
-      if (counter) counter.textContent = String(index + 1).padStart(2, "0") + " / " + String(thumbnails.length).padStart(2, "0");
-      if (moveFocus) thumb.focus();
-    };
-
-    thumbnails.forEach((thumb, index) => {
-      thumb.addEventListener("click", () => selectScreenshot(index));
-      thumb.addEventListener("keydown", (event) => {
-        if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
-        event.preventDefault();
-        const next = (index + (event.key === "ArrowRight" ? 1 : -1) + thumbnails.length) % thumbnails.length;
-        selectScreenshot(next, true);
       });
     });
-    mainButton.addEventListener("click", () => {
-      const big = document.createElement("img");
-      big.src = mainImage.src;
-      big.alt = mainImage.alt;
-      openLightbox(big);
-    });
-    // El cambio de idioma también se refleja en el alt de la imagen activa.
-    gallery.addEventListener("portfolio:language", () => {
-      const index = Math.max(0, thumbnails.findIndex((thumb) => thumb.classList.contains("is-active")));
-      if (thumbnails.length) selectScreenshot(index);
-    });
-    if (thumbnails.length) selectScreenshot(0); // Inicializa también el idioma recuperado de localStorage.
+    thumbs.forEach(function (t) { t.setAttribute("aria-pressed", String(t.classList.contains("active"))); });
   });
 
-  document.querySelectorAll(".project-gallery > img").forEach((img) => {
-    img.setAttribute("tabindex", "0");
-    img.setAttribute("role", "button");
-    const open = () => {
-      const big = document.createElement("img");
-      big.src = img.src;
-      big.alt = img.alt;
-      openLightbox(big);
-    };
-    img.addEventListener("click", open);
-    img.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); } });
+  function openMedia(element) {
+    if (!dialog || !dialogContent || !dialog.showModal) return;
+    dialogContent.replaceChildren(element);
+    dialog.showModal();
+    document.body.classList.add("dialog-open");
+    if (dialogClose) dialogClose.focus();
+  }
+  document.querySelectorAll("[data-preview]").forEach(function (button) {
+    button.addEventListener("click", function () {
+      const src = button.dataset.preview;
+      if (!src) return;
+      const image = document.createElement("img");
+      image.src = src;
+      image.alt = currentLang === "en" && button.dataset.enAlt
+        ? button.dataset.enAlt : button.dataset.alt || "";
+      openMedia(image);
+    });
   });
-
-  document.querySelectorAll(".gallery-video-trigger").forEach((btn) => {
-    btn.addEventListener("click", () => {
+  document.querySelectorAll("[data-preview-video]").forEach(function (button) {
+    button.addEventListener("click", function () {
+      const src = button.dataset.previewVideo;
+      if (!src) return;
       const video = document.createElement("video");
-      video.src = btn.dataset.video;
-      video.poster = btn.dataset.poster || "";
+      video.src = src;
       video.controls = true;
-      video.autoplay = true;
       video.playsInline = true;
-      openLightbox(video);
+      video.preload = "metadata";
+      video.autoplay = true;
+      openMedia(video);
     });
   });
-
-  if (lightboxClose) lightboxClose.addEventListener("click", closeLightbox);
-  if (lightbox) {
-    lightbox.addEventListener("click", (e) => { if (e.target === lightbox) closeLightbox(); });
-    document.addEventListener("keydown", (event) => {
-      if (lightbox.hidden) return;
-      if (event.key === "Escape") {
-        event.preventDefault();
-        closeLightbox();
-      }
-      if (event.key !== "Tab") return;
-      const focusable = [lightboxClose, ...lightboxContent.querySelectorAll('a[href], button, video[controls], [tabindex]:not([tabindex="-1"])')];
-      const first = focusable[0];
-      const last = focusable[focusable.length - 1];
-      if (event.shiftKey && document.activeElement === first) {
-        event.preventDefault();
-        last.focus();
-      } else if (!event.shiftKey && document.activeElement === last) {
-        event.preventDefault();
-        first.focus();
-      }
+  if (dialogClose && dialog) {
+    dialogClose.addEventListener("click", function () { dialog.close(); });
+    dialog.addEventListener("click", function (event) {
+      if (event.target === dialog) dialog.close();
+    });
+    dialog.addEventListener("close", function () {
+      const video = dialogContent ? dialogContent.querySelector("video") : null;
+      if (video) video.pause();
+      if (dialogContent) dialogContent.replaceChildren();
+      document.body.classList.remove("dialog-open");
     });
   }
 
-  // Datos estructurados (JSON-LD) para buscadores, a partir de data.js.
-  // No afecta el contenido visible: solo ayuda a que Google entienda
-  // quién sos y qué proyectos mostrás.
+  const year = document.getElementById("year");
+  if (year) year.textContent = String(new Date().getFullYear());
+
+  if ("IntersectionObserver" in window) {
+    const anchors = document.querySelectorAll('.nav-links a[href^="#"]');
+    const sections = Array.from(anchors).map(function (anchor) {
+      return document.getElementById(anchor.getAttribute("href").slice(1));
+    }).filter(Boolean);
+    if (sections.length) {
+      const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          anchors.forEach(function (anchor) {
+            anchor.classList.toggle("is-active", anchor.getAttribute("href") === "#" + entry.target.id);
+          });
+        });
+      }, { rootMargin: "-25% 0px -60% 0px", threshold: 0 });
+      sections.forEach(function (section) { observer.observe(section); });
+    }
+  }
+
   if (typeof SITE_DATA !== "undefined") {
-    const ld = {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      name: SITE_DATA.person.name,
-      jobTitle: SITE_DATA.person.jobTitle,
-      url: SITE_DATA.person.url,
-      email: SITE_DATA.person.email,
-      sameAs: SITE_DATA.person.sameAs,
-      knowsAbout: SITE_DATA.projects.map((p) => p.name)
-    };
+    const siteUrl = SITE_DATA.person.url;
+    const sameAs = SITE_DATA.person.sameAs;
+    const graph = [
+      { "@type": "Person", name: SITE_DATA.person.name, url: siteUrl, jobTitle: SITE_DATA.person.jobTitle, sameAs: sameAs },
+      { "@type": "WebSite", name: "David Espínola — Portafolio", url: siteUrl, inLanguage: ["es", "en"] }
+    ];
+    (SITE_DATA.projects || []).forEach(function (project) {
+      graph.push({ "@type": "SoftwareApplication", name: project.name,
+        description: project.description, url: project.url || siteUrl });
+    });
     const script = document.createElement("script");
     script.type = "application/ld+json";
-    script.textContent = JSON.stringify(ld);
+    script.textContent = JSON.stringify({ "@context": "https://schema.org", "@graph": graph });
     document.head.appendChild(script);
   }
 });

@@ -1,68 +1,59 @@
 # David Espínola — Portafolio
 
-Portafolio personal de **Néstor David Espínola Delvalle**: soporte IT, desarrollo de software, proyectos y trayectoria académica/profesional. Sitio estático, sin frameworks ni build step, pensado para publicarse con GitHub Pages.
+Portafolio personal de David Espínola, con experiencia en soporte IT, desarrollo de software, bases de datos e integración de sistemas.
 
-> ⚠️ Antes de publicar, revisá los comentarios `TODO` en `index.html` y `data.js`: marcan datos que faltan (el PDF del CV y enlaces a repositorios/capturas de los proyectos internos o académicos).
+**Sitio publicado:** https://d4vdxh1.github.io/david-espinola-portfolio/
 
-## Descripción
+## Sobre el diseño
 
-Página de una sola vista con: presentación, proyectos, sección "sobre mí", experiencia y formación, habilidades e idiomas, reconocimientos y contacto. El contenido principal está escrito directamente en el HTML (no depende de JavaScript para mostrarse); JavaScript solo agrega el menú móvil, animaciones suaves al hacer scroll y datos estructurados (JSON-LD) para buscadores.
+Rediseño original con enfoque de currículum interactivo: tipografía clara, experiencia compacta, proyectos en cuadrícula y componentes responsivos. No se ha copiado el diseño ni el código de otros portafolios; las ilustraciones de los proyectos sin capturas son conceptuales.
 
-## Tecnologías usadas
+## Funcionalidades
 
-- HTML5 semántico (`header`, `nav`, `main`, `section`, `article`, `footer`)
-- CSS3 (variables, grid, flexbox, responsive, `prefers-reduced-motion`)
-- JavaScript vanilla (sin dependencias ni build step)
-- Tipografías Manrope y DM Mono vía Google Fonts
+- Selector español/inglés, con preferencia guardada localmente.
+- Tema claro/oscuro, con preferencia guardada localmente y respeto al tema del dispositivo al entrar por primera vez.
+- Secciones de presentación, perfil, experiencia, proyectos, formación, habilidades, reconocimientos y contacto.
+- Tarjetas de proyectos con enlaces directos, estado y tecnologías.
+- Capturas reales para AJAC, SIGSOL y Heko Porã; galería y visor ampliado, más un video de Heko Porã.
+- Navegación adaptable, etiquetas accesibles y compatibilidad con movimiento reducido.
+- Metadatos estructurados para buscadores.
 
-## Estructura de archivos
+## Tecnologías
 
-```
-├── index.html     # Contenido completo del sitio
-├── styles.css      # Estilos (paleta oscura azul, responsive)
-├── app.js          # Menú móvil, animaciones al scroll, JSON-LD
-├── data.js         # Datos de apoyo para SEO (no renderiza contenido)
-├── foto.jpg        # Foto de perfil usada en el hero
-├── img/
-│   ├── sigsol-1.jpg     # Captura: pantalla de inicio de sesión de SIGSOL
-│   ├── sigsol-2.jpg     # Captura: dashboard de SIGSOL
-│   ├── sigsol-3.jpg     # Captura: formulario de nueva solicitud
-│   └── hekopora-1.jpg   # Captura: dashboard de Heko Porã
-├── video/
-│   └── hekopora-demo.mp4   # Video de demostración de Heko Porã (comprimido, ~740 KB)
-├── cv-nestor-espinola.pdf   # TODO: agregar este archivo (CV descargable)
-└── README.md
-```
+HTML5, CSS3 y JavaScript vanilla. No requiere framework ni proceso de compilación. La tipografía utiliza Google Fonts con alternativas locales.
 
-## Cómo verlo localmente
+## Ejecutar en local
 
-No necesita instalación. Dos opciones:
+Abrí la carpeta del repositorio con un servidor HTTP local:
 
-1. Abrir `index.html` directamente en el navegador (doble clic).
-2. O levantar un servidor local simple, por ejemplo:
-   ```bash
-   python3 -m http.server 3000
-   ```
-   y luego entrar a `http://localhost:3000`.
+~~~bash
+python -m http.server 3000
+~~~
 
-## Cómo publicarlo en GitHub Pages
+Visitá http://localhost:3000.
 
-1. Confirmá el nombre del repositorio en GitHub (en el mensaje de la consigna se mencionaron dos nombres distintos: `nestor-espinola-portfolio` y `david-espinola-portfolio` — usá el que ya existe en tu cuenta).
-2. Subí estos archivos a la rama `main` (raíz del repositorio):
-   ```bash
-   git init
-   git add .
-   git commit -m "Portafolio: versión liviana"
-   git branch -M main
-   git remote add origin https://github.com/d4vdxh1/<nombre-del-repositorio>.git
-   git push -u origin main
-   ```
-3. En GitHub: **Settings → Pages → Build and deployment → Source: Deploy from a branch → Branch: `main` / `root`**.
-4. El sitio queda publicado en `https://d4vdxh1.github.io/<nombre-del-repositorio>/` (puede tardar uno o dos minutos la primera vez).
-5. Actualizá la URL en `data.js` (`person.url`) con la dirección final, para que el JSON-LD sea correcto.
+También podés abrir index.html directamente; al usar un servidor local el comportamiento se parece más a GitHub Pages.
 
-## Pendientes antes de publicar
+## Estructura
 
-- [ ] Agregar `cv-nestor-espinola.pdf` a la raíz del repositorio.
-- [ ] Completar enlaces a repositorio/capturas de "Sistema de gestión de tickets de soporte" y "Sistema de agendamiento y atención hospitalaria" si se pueden compartir.
-- [ ] Confirmar el nombre definitivo del repositorio y actualizar este README y `data.js`.
+- index.html: contenido semántico y traducciones de interfaz.
+- styles.css: diseño responsivo, tarjetas y temas.
+- app.js: idiomas, temas, navegación y visor de multimedia.
+- data.js: metadatos JSON-LD.
+- img/: capturas auténticas usadas en el portafolio.
+- video/: demostración en video de Heko Porã.
+- cv-nestor-espinola.pdf.pdf: archivo de CV histórico actualmente enlazado desde la página.
+
+## Editar y publicar
+
+El contenido visible se edita directamente en index.html. Las traducciones al inglés están en los atributos data-en, data-en-html y data-en-aria; el español es el contenido por defecto. Las imágenes reales pueden abrirse en tamaño completo sin servicios externos.
+
+El proyecto se publica mediante GitHub Pages desde main. Antes de reemplazar el CV, verificá los datos personales y actualizá también la ruta de descarga del HTML. Se conserva el nombre del archivo histórico para no romper descargas existentes.
+
+## Privacidad y alcance
+
+SIGSOL es un sistema interno: se muestran capturas y una descripción general, no su repositorio. Día a Día está en desarrollo, y Heko Porã es un trabajo académico grupal. No se presentan esas aplicaciones como servicios comerciales disponibles.
+
+## Créditos
+
+Diseño y contenido para el portafolio de David Espínola. La estructura visual se desarrolló de forma original, con referencia general a los patrones de portafolios y currículums web minimalistas.

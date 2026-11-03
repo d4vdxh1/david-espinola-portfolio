@@ -1,405 +1,290 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" data-theme="dark">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<meta name="theme-color" content="#070a12" />
-<meta name="description" id="meta-description" content="Portafolio de Néstor David Espínola Delvalle: soporte IT, desarrollo de software, proyectos y trayectoria." data-en="Portfolio of Néstor David Espínola Delvalle: IT support, software development, projects and career path." />
-<title id="document-title" data-en="Néstor David Espínola Delvalle — Portfolio">Néstor David Espínola Delvalle — Portafolio</title>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-<script>document.documentElement.classList.add("js");</script>
-<link rel="stylesheet" href="styles.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0c1017">
+  <meta id="meta-description" name="description" content="David Espínola: soporte IT, desarrollo de software e integración de sistemas. Experiencia, proyectos y contacto." data-en="David Espínola: IT support, software development and systems integration. Experience, projects and contact.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="David Espínola | Software & IT">
+  <meta property="og:description" content="Soporte IT, desarrollo de software e integración de sistemas.">
+  <meta property="og:url" content="https://d4vdxh1.github.io/david-espinola-portfolio/">
+  <meta name="color-scheme" content="dark light">
+  <title id="document-title" data-en="David Espínola — Portfolio">David Espínola — Portafolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script>
+    try {
+      const stored = localStorage.getItem("de-portfolio-theme");
+      document.documentElement.dataset.theme = stored === "light" || stored === "dark"
+        ? stored : (matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+    } catch (error) { document.documentElement.dataset.theme = "dark"; }
+  </script>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<a class="sr-only skip-link" href="#main" data-en="Skip to content">Saltar al contenido</a>
-<div class="progress" id="progress" aria-hidden="true"></div>
-
-<header class="site-header">
-  <nav class="nav shell" aria-label="Navegación principal" data-en-aria="Main navigation">
-    <a class="brand" href="#inicio"><span class="brand-mark">D<span>.</span></span><span class="brand-name">DAVID ESPÍNOLA<span class="brand-suffix"> / PORTFOLIO</span></span></a>
-    <button class="menu-toggle" id="menu-toggle" type="button" aria-controls="menu" aria-expanded="false">
-      <span class="sr-only" data-en="Open navigation">Abrir navegación</span>
-      <svg class="icon" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-    </button>
-    <div class="nav-links" id="menu">
-      <a href="#proyectos" data-en="Projects">Proyectos</a>
-      <a href="#sobre-mi" data-en="About">Sobre mí</a>
-      <a href="#trayectoria" data-en="Path">Trayectoria</a>
-      <a href="#habilidades" data-en="Skills">Habilidades</a>
-      <a class="nav-cta" href="#contacto"><span data-en="Contact">Contacto</span> <svg class="icon sm" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
-      <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Cambiar idioma del sitio" data-en-aria="Switch site language">
-        <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 4 6 4 9s-1.5 6.4-4 9c-2.5-2.6-4-6-4-9s1.5-6.4 4-9z"/></svg>
-        <span id="lang-toggle-label">English</span>
-      </button>
-    </div>
-  </nav>
-</header>
-
-<main id="main">
-  <!-- Hero centrado: el trabajo es protagonista, no la fotografía -->
-  <section class="hero hero--centered shell" id="inicio" aria-labelledby="hero-title">
-    <div class="hero-atmosphere" aria-hidden="true">
-      <span class="hero-halo hero-halo--one"></span>
-      <span class="hero-halo hero-halo--two"></span>
-      <span class="hero-halo hero-halo--three"></span>
-      <span class="hero-spark hero-spark--one"></span>
-      <span class="hero-spark hero-spark--two"></span>
-      <span class="hero-spark hero-spark--three"></span>
-    </div>
-    <div class="hero-content reveal">
-      <div class="hero-status">
-        <span class="hero-status-mark" aria-hidden="true">✦</span>
-        <span data-en="IT SUPPORT · SOFTWARE DEVELOPMENT">SOPORTE IT · DESARROLLO DE SOFTWARE</span>
+  <a class="skip-link" href="#contenido" data-en="Skip to content">Saltar al contenido</a>
+  <header class="site-header" id="arriba">
+    <nav class="nav container" aria-label="Navegación principal" data-en-aria="Main navigation">
+      <a class="brand" href="#inicio" aria-label="David Espínola, inicio" data-en-aria="David Espínola, home">
+        <span class="brand-symbol">DE<span class="brand-dot">.</span></span>
+        <span class="brand-name">David Espínola</span>
+      </a>
+      <div class="nav-links" id="nav-links">
+        <a href="#sobre-mi" data-en="About">Sobre mí</a>
+        <a href="#experiencia" data-en="Experience">Experiencia</a>
+        <a href="#proyectos" data-en="Projects">Proyectos</a>
+        <a href="#formacion" data-en="Education">Formación</a>
+        <a href="#contacto" data-en="Contact">Contacto</a>
       </div>
-      <h1 id="hero-title" data-en-html='I build digital solutions <em>that work.</em>'>Construyo soluciones digitales <em>que funcionan.</em></h1>
-      <p class="hero-intro" data-en="I'm David Espínola. I build web applications and management systems, combining hands-on IT support with my Systems Analysis studies.">
-        Soy David Espínola. Desarrollo aplicaciones web y sistemas de gestión combinando mi experiencia en soporte informático con mis estudios en Análisis de Sistemas.
-      </p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#proyectos">
-          <span data-en="Explore my projects">Explorar proyectos</span>
-          <svg class="icon sm" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg>
+      <div class="nav-tools">
+        <button class="tool-button language-button" id="lang-toggle" type="button" aria-label="Switch to English" title="Switch to English"><span id="lang-label">EN</span></button>
+        <button class="tool-button theme-button" id="theme-toggle" type="button" aria-label="Activar modo claro" title="Activar modo claro"><span class="theme-icon" aria-hidden="true">☼</span></button>
+        <button class="tool-button menu-button" id="menu-toggle" type="button" aria-label="Abrir menú" data-en-aria="Open menu" aria-controls="nav-links" aria-expanded="false">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="contenido">
+    <section class="hero container" id="inicio" aria-labelledby="hero-title">
+      <div class="hero-main">
+        <p class="kicker"><span class="kicker-line"></span><span data-en="IT SUPPORT / SOFTWARE DEVELOPMENT">SOPORTE IT / DESARROLLO DE SOFTWARE</span></p>
+        <h1 id="hero-title" data-en-html="Hi, I'm David.<br><span>I build solutions that make a difference.</span>">Hola, soy David.<br><span>Construyo soluciones que hacen la diferencia.</span></h1>
+        <p class="hero-description" data-en="I combine hands-on IT support experience with software development and systems analysis to solve real problems, simplify workflows and build useful tools.">Combino la experiencia práctica en soporte informático con el desarrollo de software y el análisis de sistemas para resolver problemas reales, simplificar procesos y crear herramientas útiles.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#proyectos"><span data-en="Explore projects">Ver proyectos</span><span aria-hidden="true">↗</span></a>
+          <a class="button button-secondary" href="cv-nestor-espinola.pdf.pdf" download="David-Espinola-CV.pdf"><span data-en="Download résumé">Descargar CV</span><span aria-hidden="true">↓</span></a>
+        </div>
+        <div class="hero-meta">
+          <span><span class="meta-mark" aria-hidden="true">◇</span> Asunción, Paraguay</span>
+          <span><span class="meta-mark" aria-hidden="true">◇</span> Help Desk · DIESA S.A.</span>
+          <span><span class="meta-mark" aria-hidden="true">◇</span> UCA · 6.º semestre</span>
+        </div>
+      </div>
+      <aside class="hero-aside" aria-label="Proyectos en los que trabajo" data-en-aria="Projects I'm working on">
+        <div class="aside-header">
+          <span class="mono" data-en="CURRENT FOCUS">EN QUÉ ESTOY TRABAJANDO</span>
+          <span class="aside-icon" aria-hidden="true">✳</span>
+        </div>
+        <a href="https://github.com/d4vdxh1/powerdesigner-mcp" target="_blank" rel="noopener noreferrer" class="focus-item">
+          <span class="focus-index">01</span>
+          <span class="focus-copy"><strong>PowerDesigner MCP</strong><small data-en="Systems integration and automation">Integración de sistemas y automatización</small></span>
+          <span class="focus-arrow" aria-hidden="true">↗</span>
         </a>
-        <a class="btn btn-outline" href="cv-nestor-espinola.pdf.pdf" download>
-          <span data-en="Download CV">Descargar CV</span>
-          <svg class="icon sm" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>
+        <a href="https://github.com/d4vdxh1/personal-ia" target="_blank" rel="noopener noreferrer" class="focus-item">
+          <span class="focus-index">02</span>
+          <span class="focus-copy"><strong>Día a Día</strong><small data-en="Personal productivity application">Aplicación de productividad personal</small></span>
+          <span class="focus-arrow" aria-hidden="true">↗</span>
         </a>
-      </div>
-      <div class="hero-credentials" aria-label="Resumen profesional" data-en-aria="Professional summary">
-        <span>Help Desk · DIESA S.A.</span>
-        <i aria-hidden="true"></i>
-        <span data-en="Systems Analysis · UCA">Análisis de Sistemas · UCA</span>
-        <i aria-hidden="true"></i>
-        <span>Asunción · Paraguay</span>
-      </div>
-    </div>
-    <a class="hero-scroll-link" href="#proyectos">
-      <span data-en="Discover my work">Descubrí mi trabajo</span>
-      <svg class="icon" viewBox="0 0 24 24"><path d="M12 5v14m-7-7 7 7 7-7"/></svg>
-    </a>
-  </section>
+        <div class="aside-footer"><span class="tiny-dot" aria-hidden="true"></span><span data-en="From IT support to real-world software">Del soporte IT a soluciones de software reales</span></div>
+      </aside>
+    </section>
 
-  <!-- Selected work -->
-  <section class="section shell projects-section" id="proyectos" aria-labelledby="projects-title">
-    <div class="section-heading section-heading--centered reveal">
-      <p class="eyebrow" data-en="01 / FEATURED PROJECTS">01 / PROYECTOS DESTACADOS</p>
-      <h2 id="projects-title" data-en-html='Selected <em>projects.</em>'>Proyectos <em>seleccionados.</em></h2>
-      <p data-en="Real systems, real challenges and a closer look at the interfaces I built.">Sistemas reales, desafíos concretos y una mirada a las interfaces que desarrollé.</p>
-      <span class="section-underline" aria-hidden="true"></span>
-    </div>
-    <div class="project-list">
-      <article class="project-card project-card--ajac reveal">
-        <div class="project-visual project-visual--ajac">
-          <div class="preview-browser" aria-label="Composición ilustrativa de la plataforma AJAC" data-en-aria="Illustrative visual of the AJAC platform">
-            <div class="browser-chrome"><span class="browser-dots"><i></i><i></i><i></i></span><span>ajac-website.web.app</span><span>↗</span></div>
-            <div class="ajac-preview">
-              <div class="ajac-preview-top"><span class="ajac-mark">AJAC<span>.</span></span><span class="ajac-menu">INICIO &nbsp; EVENTOS &nbsp; GALERÍA</span></div>
-              <div class="ajac-preview-hero"><span class="ajac-preview-index">01 / COMUNIDAD</span><strong>Conectando<br><em>personas.</em></strong><div class="ajac-preview-pill">CALENDARIO · EVENTOS · NOTICIAS <span>↗</span></div></div>
-              <div class="ajac-preview-cards"><div><span>01</span><strong>Eventos</strong></div><div><span>02</span><strong>Galería</strong></div><div><span>03</span><strong>Noticias</strong></div></div>
-            </div>
+    <section class="section about container" id="sobre-mi" aria-labelledby="about-title">
+      <div class="section-intro">
+        <p class="overline" data-en="01 / PROFILE">01 / PERFIL</p>
+        <h2 id="about-title" data-en="A little about me">Un poco sobre mí</h2>
+      </div>
+      <div class="about-content">
+        <p data-en="I work in IT support at DIESA S.A. and study Systems Analysis at the Universidad Católica. I enjoy understanding how things work and transforming day-to-day needs into practical solutions. My experience ranges from user support to web applications, databases and systems integration.">Trabajo en soporte informático en DIESA S.A. y estudio Análisis de Sistemas en la Universidad Católica. Me interesa entender cómo funcionan las cosas y transformar necesidades cotidianas en soluciones prácticas. Mi experiencia abarca desde el soporte a usuarios hasta aplicaciones web, bases de datos e integración de sistemas.</p>
+        <p class="about-footnote" data-en="Areas of interest: software engineering, automation, relational databases and cybersecurity.">Áreas de interés: ingeniería de software, automatización, bases de datos relacionales y ciberseguridad.</p>
+      </div>
+    </section>
+
+    <section class="section container" id="experiencia" aria-labelledby="work-title">
+      <div class="section-intro">
+        <p class="overline" data-en="02 / EXPERIENCE">02 / EXPERIENCIA</p>
+        <h2 id="work-title" data-en="Professional experience">Experiencia profesional</h2>
+        <p data-en="Hands-on work, problem solving and continuous improvement.">Trabajo práctico, resolución de problemas y mejora continua.</p>
+      </div>
+      <div class="timeline">
+        <article class="timeline-item">
+          <div class="timeline-period" data-en="AUG 2025 — PRESENT">AGO 2025 — ACTUALIDAD</div>
+          <div class="timeline-body">
+            <div class="timeline-title"><h3>Help Desk</h3><span class="timeline-company">DIESA S.A.</span></div>
+            <p data-en="User support, incident diagnosis and resolution, hardware and software maintenance, account administration, connectivity and internal process improvements.">Soporte a usuarios, diagnóstico y resolución de incidentes, mantenimiento de hardware y software, administración de cuentas, conectividad y mejoras de procesos internos.</p>
+            <div class="chips"><span data-en="Technical support">Soporte técnico</span><span data-en="Incident management">Gestión de incidentes</span><span>IT Operations</span></div>
           </div>
-          <!-- Se mostrará automáticamente cuando subas img/ajac-home.jpg.
-               Hasta entonces, permanece el diseño conceptual anterior. -->
-          <div class="showcase-gallery showcase-gallery--single ajac-real-gallery"
-               data-gallery="ajac" aria-label="Captura real de AJAC" data-en-aria="Real AJAC website screenshot">
-            <button class="showcase-main" type="button"
-                    aria-label="Ampliar captura real de AJAC" data-en-aria="Enlarge real AJAC screenshot">
-              <img class="showcase-main-image" data-ajac-screenshot src="img/ajac-home.jpg"
-                   alt="Portada real de AJAC NSPS: fotografía del grupo, presentación y botones de navegación"
-                   width="831" height="489" loading="eager" />
-              <span class="showcase-expand">
-                <svg class="icon" viewBox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5M3 3l6 6M21 3l-6 6M3 21l6-6M21 21l-6-6"/></svg>
-                <span data-en="View full size">Ver tamaño completo</span>
-              </span>
+        </article>
+        <article class="timeline-item">
+          <div class="timeline-period" data-en="DEC 2022 — JAN 2023">DIC 2022 — ENE 2023</div>
+          <div class="timeline-body">
+            <div class="timeline-title"><h3 data-en="IT support internship">Pasantía de soporte informático</h3><span class="timeline-company">DIESA S.A.</span></div>
+            <p data-en="Equipment preparation, preventive maintenance, inventory control and technical assistance.">Preparación de equipos, mantenimiento preventivo, control de inventario y asistencia técnica.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section container" id="proyectos" aria-labelledby="projects-title">
+      <div class="section-intro section-intro-wide">
+        <div>
+          <p class="overline" data-en="03 / SELECTED WORK">03 / TRABAJOS SELECCIONADOS</p>
+          <h2 id="projects-title" data-en="Projects I've built">Proyectos que desarrollé</h2>
+          <p data-en="Real implementations, ongoing products and academic work. These are some of the challenges I've taken on.">Implementaciones reales, productos en desarrollo y trabajos académicos. Estos son algunos de los desafíos que abordé.</p>
+        </div>
+        <a class="text-link" href="https://github.com/d4vdxh1" target="_blank" rel="noopener noreferrer"><span data-en="All repositories">Todos los repositorios</span> ↗</a>
+      </div>
+      <div class="project-grid">
+        <article class="project-card">
+          <div class="project-media image-media">
+            <button class="media-expand" type="button" data-preview="img/ajac-home.jpg" data-alt="Captura de la portada de AJAC" data-en-alt="AJAC homepage screenshot" aria-label="Ampliar captura de AJAC" data-en-aria="Enlarge AJAC screenshot">
+              <img src="img/ajac-home.jpg" width="831" height="489" alt="Captura real de la portada de AJAC" loading="lazy">
+              <span class="expand-corner" aria-hidden="true">↗</span>
             </button>
           </div>
-          <span class="visual-caption visual-caption--concept" data-en="ILLUSTRATIVE MOCKUP · ACTUAL IMAGE PENDING">MAQUETA ILUSTRATIVA · CAPTURA PENDIENTE</span>
-          <span class="visual-caption visual-caption--real" data-en="LIVE WEBSITE · ACTUAL SCREENSHOT">SITIO EN PRODUCCIÓN · CAPTURA</span>
-          <div class="project-visual-number">01 <span>/ 03</span></div>
-        </div>
-        <div class="project-content">
-          <p class="project-kind"><span class="status-light"></span><span data-en="PUBLISHED WEBSITE">SITIO WEB PUBLICADO</span></p>
-          <h3>AJAC<span class="project-subtitle" data-en="Official web platform">Plataforma web oficial</span></h3>
-          <p class="project-lead" data-en="A digital space that connects the community through events, news, galleries and notifications.">Un espacio digital que conecta a la comunidad mediante eventos, noticias, galerías y notificaciones.</p>
-          <div class="project-divider"></div>
-          <dl>
-            <div class="project-field"><dt data-en="My contribution">Mi aporte</dt><dd data-en="End-to-end development and publication of the site.">Desarrollo integral y publicación del sitio.</dd></div>
-          </dl>
-          <ul class="project-stack" aria-label="Tecnologías"><li>React</li><li>JavaScript</li><li>Tailwind</li><li>Firebase</li><li>Cloudinary</li><li>OneSignal</li></ul>
-          <a class="project-action" href="https://ajac-website.web.app" target="_blank" rel="noreferrer"><span data-en="Explore the live project">Explorar proyecto publicado</span><span class="project-action-icon" aria-hidden="true">↗</span></a>
-        </div>
-      </article>
+          <div class="project-info">
+            <div class="project-topline"><span class="project-category" data-en="WEB APPLICATION">APLICACIÓN WEB</span><span class="status status-live"><span class="status-dot"></span><span data-en="Published">Publicado</span></span></div>
+            <h3>AJAC <span class="project-number">/ 01</span></h3>
+            <p data-en="An online home for a community: activities, events calendar, galleries and notifications. Developed and published as a working website.">Una plataforma para conectar a una comunidad: actividades, calendario de eventos, galería y notificaciones. Desarrollada y publicada como sitio funcional.</p>
+            <div class="project-tags"><span>React</span><span>JavaScript</span><span>Firebase</span><span>Tailwind</span></div>
+            <div class="project-links"><a href="https://ajac-website.web.app/" target="_blank" rel="noopener noreferrer"><span data-en="Live website">Ver sitio</span> ↗</a></div>
+          </div>
+        </article>
 
-      <article class="project-card project-card--sigsol reveal">
-        <div class="project-visual project-visual--sigsol">
-          <div class="showcase-gallery" data-gallery="sigsol" aria-label="Galería de capturas de SIGSOL" data-en-aria="SIGSOL screenshot gallery">
-            <button class="showcase-main" type="button" aria-label="Ampliar captura del panel de SIGSOL" data-en-aria="Enlarge SIGSOL dashboard screenshot">
-              <img class="showcase-main-image" src="img/sigsol-2.jpg" alt="Dashboard de SIGSOL con estadísticas y estados de solicitudes" width="1000" height="492" loading="lazy" />
-              <span class="showcase-expand"><svg class="icon" viewBox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5M3 3l6 6M21 3l-6 6M3 21l6-6M21 21l-6-6"/></svg><span data-en="View full size">Ver tamaño completo</span></span>
+        <article class="project-card">
+          <div class="project-media image-media gallery" data-gallery>
+            <button class="media-expand" type="button" data-preview="img/sigsol-2.jpg" data-alt="Panel de SIGSOL" data-en-alt="SIGSOL dashboard" aria-label="Ampliar captura de SIGSOL" data-en-aria="Enlarge SIGSOL screenshot">
+              <img class="gallery-main-image" src="img/sigsol-2.jpg" width="1000" height="492" alt="Panel del sistema de tickets SIGSOL" loading="lazy">
+              <span class="expand-corner" aria-hidden="true">↗</span>
             </button>
-            <div class="showcase-controls">
-              <div class="showcase-thumbs" role="group" aria-label="Elegir captura de SIGSOL" data-en-aria="Choose SIGSOL screenshot">
-                <button type="button" class="showcase-thumb is-active" aria-pressed="true"
-                  data-full="img/sigsol-2.jpg" data-alt-es="Dashboard de SIGSOL con estadísticas y estados de solicitudes" data-alt-en="SIGSOL dashboard with request statistics and statuses"
-                  aria-label="Mostrar panel principal" data-en-aria="Show dashboard"><img src="img/sigsol-2.jpg" alt="" loading="lazy" width="1000" height="492" /><span data-en="Dashboard">Panel</span></button>
-                <button type="button" class="showcase-thumb" aria-pressed="false"
-                  data-full="img/sigsol-1.jpg" data-alt-es="Pantalla de inicio de sesión de SIGSOL" data-alt-en="SIGSOL login screen"
-                  aria-label="Mostrar inicio de sesión" data-en-aria="Show login screen"><img src="img/sigsol-1.jpg" alt="" loading="lazy" width="1000" height="494" /><span data-en="Login">Acceso</span></button>
-                <button type="button" class="showcase-thumb" aria-pressed="false"
-                  data-full="img/sigsol-3.jpg" data-alt-es="Formulario de nueva solicitud en SIGSOL" data-alt-en="New support request form in SIGSOL"
-                  aria-label="Mostrar formulario de solicitud" data-en-aria="Show request form"><img src="img/sigsol-3.jpg" alt="" loading="lazy" width="977" height="877" /><span data-en="Request">Solicitud</span></button>
-              </div>
-              <span class="showcase-count" aria-live="polite">01 / 03</span>
+            <div class="gallery-thumbs" aria-label="Seleccionar captura de SIGSOL" data-en-aria="Select SIGSOL screenshot">
+              <button type="button" class="gallery-thumb active" data-swap-src="img/sigsol-2.jpg" data-alt="Panel de SIGSOL" data-en-alt="SIGSOL dashboard" aria-label="Ver panel" data-en-aria="View dashboard"><img src="img/sigsol-2.jpg" alt="" loading="lazy"></button>
+              <button type="button" class="gallery-thumb" data-swap-src="img/sigsol-1.jpg" data-alt="Inicio de sesión de SIGSOL" data-en-alt="SIGSOL login" aria-label="Ver acceso" data-en-aria="View login"><img src="img/sigsol-1.jpg" alt="" loading="lazy"></button>
+              <button type="button" class="gallery-thumb" data-swap-src="img/sigsol-3.jpg" data-alt="Formulario de solicitudes de SIGSOL" data-en-alt="SIGSOL request form" aria-label="Ver solicitudes" data-en-aria="View requests"><img src="img/sigsol-3.jpg" alt="" loading="lazy"></button>
             </div>
           </div>
-          <span class="visual-caption" data-en="REAL PRODUCT SCREENS">CAPTURAS DEL SISTEMA</span>
-          <div class="project-visual-number">02 <span>/ 03</span></div>
-        </div>
-        <div class="project-content">
-          <p class="project-kind"><span class="status-light"></span><span data-en="INTERNAL SYSTEM / IN TESTING">SISTEMA INTERNO / EN PRUEBAS</span></p>
-          <h3>SIGSOL<span class="project-subtitle" data-en="Support ticket management">Gestión de tickets de soporte</span></h3>
-          <p class="project-lead" data-en="Organized support requests, better traceability and a more transparent workflow for IT teams.">Solicitudes de soporte organizadas, mayor trazabilidad y un flujo de trabajo más claro para equipos de informática.</p>
-          <div class="project-divider"></div>
-          <dl>
-            <div class="project-field"><dt data-en="My contribution">Mi aporte</dt><dd data-en="System design and development, database, APIs and test environment.">Diseño y desarrollo del sistema, base de datos, APIs y entorno de pruebas.</dd></div>
-          </dl>
-          <ul class="project-stack" aria-label="Tecnologías"><li>PHP</li><li>JavaScript</li><li>MySQL</li><li>Docker</li><li>Ubuntu Server</li></ul>
-        </div>
-      </article>
+          <div class="project-info">
+            <div class="project-topline"><span class="project-category" data-en="INTERNAL SOFTWARE">SOFTWARE INTERNO</span><span class="status status-progress"><span class="status-dot"></span><span data-en="Testing">En pruebas</span></span></div>
+            <h3>SIGSOL <span class="project-number">/ 02</span></h3>
+            <p data-en="Support-ticket management with assignment, traceability and communication. My work includes interface development, database design, APIs and testing. Internal source code.">Gestión de tickets de soporte con asignación, trazabilidad y comunicación. Mi aporte incluye interfaces, diseño de base de datos, APIs y pruebas. Código interno.</p>
+            <div class="project-tags"><span>PHP</span><span>JavaScript</span><span>MySQL</span><span>Docker</span></div>
+            <div class="project-links"><span class="private-note" data-en="Internal project · screenshots available">Proyecto interno · capturas disponibles</span></div>
+          </div>
+        </article>
 
-      <article class="project-card project-card--heko reveal">
-        <div class="project-visual project-visual--heko">
-          <div class="showcase-gallery showcase-gallery--heko" data-gallery="heko" aria-label="Captura y video de Heko Porã" data-en-aria="Heko Porã screenshot and demo video">
-            <button class="showcase-main" type="button" aria-label="Ampliar dashboard de Heko Porã" data-en-aria="Enlarge Heko Porã dashboard">
-              <img class="showcase-main-image" src="img/hekopora-1.jpg" alt="Dashboard de Heko Porã con turnos, consultas y gráficos" width="1000" height="561" loading="lazy" />
-              <span class="showcase-expand"><svg class="icon" viewBox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5M3 3l6 6M21 3l-6 6M3 21l6-6M21 21l-6-6"/></svg><span data-en="View full size">Ver tamaño completo</span></span>
-            </button>
-            <div class="showcase-controls showcase-controls--heko">
-              <span class="showcase-help" data-en="Real system screenshot · Click to enlarge">Captura real · Hacé clic para ampliar</span>
-              <button class="gallery-video-trigger showcase-video" type="button" data-video="video/hekopora-demo.mp4" data-poster="img/hekopora-1.jpg"
-                aria-label="Reproducir demostración de Heko Porã" data-en-aria="Play Heko Porã demo video">
-                <span class="video-play" aria-hidden="true">▶</span><span data-en="Watch demo">Ver demostración</span>
-              </button>
+        <article class="project-card">
+          <div class="project-media art-media art-mcp" aria-label="Ilustración de la integración PowerDesigner MCP" data-en-aria="PowerDesigner MCP integration illustration">
+            <div class="mcp-top"><span>INTEGRATION / MCP</span><span class="art-dot"></span></div>
+            <div class="mcp-flow"><span>ChatGPT</span><b>⇄</b><span>PowerDesigner</span></div>
+            <div class="mcp-bottom">Python <span>·</span> COM <span>·</span> Tunnel</div>
+          </div>
+          <div class="project-info">
+            <div class="project-topline"><span class="project-category" data-en="SYSTEMS INTEGRATION">INTEGRACIÓN DE SISTEMAS</span><span class="status status-code"><span class="status-dot"></span><span data-en="Open source">Código público</span></span></div>
+            <h3>PowerDesigner MCP <span class="project-number">/ 03</span></h3>
+            <p data-en="A local integration that connects PowerDesigner with ChatGPT through Python and COM automation. Includes architecture, setup and security documentation.">Integración local de PowerDesigner con ChatGPT mediante Python y automatización COM. Incluye arquitectura, instalación y documentación de seguridad.</p>
+            <div class="project-tags"><span>Python</span><span>COM</span><span>MCP</span><span>Windows</span></div>
+            <div class="project-links"><a href="https://github.com/d4vdxh1/powerdesigner-mcp" target="_blank" rel="noopener noreferrer"><span data-en="Source code">Ver código</span> ↗</a></div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-media art-media art-day" aria-label="Ilustración conceptual de Día a Día" data-en-aria="Día a Día concept illustration">
+            <div class="day-window">
+              <div class="day-window-head"><span class="day-icon">✳</span><span>Día a Día</span><small data-en="MY DAY">MI DÍA</small></div>
+              <div class="day-row"><span class="day-check checked">✓</span><span class="day-bar long"></span><span class="day-pill">100%</span></div>
+              <div class="day-row"><span class="day-check">○</span><span class="day-bar medium"></span><span class="day-pill">60%</span></div>
+              <div class="day-row"><span class="day-check">○</span><span class="day-bar short"></span><span class="day-pill">20%</span></div>
             </div>
           </div>
-          <span class="visual-caption" data-en="REAL SCREENS + VIDEO">CAPTURAS + VIDEO REAL</span>
-          <div class="project-visual-number">03 <span>/ 03</span></div>
-        </div>
-        <div class="project-content">
-          <p class="project-kind"><span class="status-light"></span><span data-en="ACADEMIC TEAM PROJECT">PROYECTO ACADÉMICO GRUPAL</span></p>
-          <h3>Heko Porã<span class="project-subtitle" data-en="Hospital care management">Gestión de atención hospitalaria</span></h3>
-          <p class="project-lead" data-en="A solution for organizing patient appointments, consultations and healthcare operations.">Una solución para organizar turnos, consultas y procesos de atención de pacientes.</p>
-          <div class="project-divider"></div>
-          <dl>
-            <div class="project-field"><dt data-en="My contribution">Mi aporte</dt><dd data-en="Frontend design, backend API integration, database modeling and validation.">Diseño frontend, integración de APIs, modelado de base de datos y validaciones.</dd></div>
-          </dl>
-          <ul class="project-stack" aria-label="Tecnologías"><li>HTML5</li><li>JavaScript</li><li>Bootstrap</li><li>Node.js</li><li>Sybase</li></ul>
-        </div>
-      </article>
-    </div>
-  </section>
+          <div class="project-info">
+            <div class="project-topline"><span class="project-category" data-en="PERSONAL PRODUCT">PRODUCTO PERSONAL</span><span class="status status-progress"><span class="status-dot"></span><span data-en="In development">En desarrollo</span></span></div>
+            <h3>Día a Día <span class="project-number">/ 04</span></h3>
+            <p data-en="A personal app for habits, goals, daily check-ins and journaling, with authentication and data persistence. In active development.">Aplicación personal de hábitos, objetivos, check-ins y diario, con autenticación y persistencia de datos. En desarrollo activo.</p>
+            <div class="project-tags"><span>Next.js</span><span>TypeScript</span><span>Supabase</span></div>
+            <div class="project-links"><a href="https://github.com/d4vdxh1/personal-ia" target="_blank" rel="noopener noreferrer"><span data-en="Source code">Ver código</span> ↗</a></div>
+          </div>
+        </article>
 
-  <!-- Sobre mí -->
-  <section class="section shell about-section" id="sobre-mi" aria-labelledby="about-title">
-    <div class="about-statement reveal">
-      <p class="eyebrow" data-en="02 — ABOUT ME">02 — SOBRE MÍ</p>
-      <h2 id="about-title" data-en-html='People, systems and solutions that <em>work.</em>'>Personas, sistemas y soluciones que <em>funcionan.</em></h2>
-      <p data-en="I start by understanding what people need. From there, I propose improvements, build practical tools and help put them into use.">Mi trabajo comienza entendiendo las necesidades de las personas. A partir de ellas, propongo mejoras, construyo herramientas y acompaño su implementación.</p>
-      <a class="btn btn-outline" href="#contacto"><span data-en="Let's talk">Conversemos</span> <svg class="icon sm" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
-    </div>
-    <div class="about-notes reveal">
-      <article class="about-note">
-        <div class="note-badge"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></div>
-        <div><p data-en="Current role">Rol actual</p><strong>Help Desk · DIESA S.A.</strong></div>
-      </article>
-      <article class="about-note">
-        <div class="note-badge"><svg class="icon" viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5-10-5z"/><path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg></div>
-        <div><p data-en="Education">Formación</p><strong data-en="Systems Analysis · 6th semester">Análisis de Sistemas · 6.º semestre</strong></div>
-      </article>
-      <article class="about-note">
-        <div class="note-badge"><svg class="icon" viewBox="0 0 24 24"><path d="M12 2l1.8 5.2L19 9l-5.2 1.8L12 16l-1.8-5.2L5 9l5.2-1.8z"/></svg></div>
-        <div><p data-en="Interests">Intereses</p><strong data-en="Development · AI · cybersecurity">Desarrollo · IA · ciberseguridad</strong></div>
-      </article>
-    </div>
-  </section>
+        <article class="project-card">
+          <div class="project-media image-media">
+            <button class="media-expand" type="button" data-preview="img/hekopora-1.jpg" data-alt="Dashboard del sistema de salud Heko Porã" data-en-alt="Heko Porã healthcare dashboard" aria-label="Ampliar captura de Heko Porã" data-en-aria="Enlarge Heko Porã screenshot">
+              <img src="img/hekopora-1.jpg" width="1000" height="580" alt="Dashboard del sistema académico Heko Porã" loading="lazy">
+              <span class="expand-corner" aria-hidden="true">↗</span>
+            </button>
+          </div>
+          <div class="project-info">
+            <div class="project-topline"><span class="project-category" data-en="ACADEMIC PROJECT">PROYECTO ACADÉMICO</span><span class="status"><span data-en="Case study">Caso de estudio</span></span></div>
+            <h3>Heko Porã <span class="project-number">/ 05</span></h3>
+            <p data-en="Academic group project focused on healthcare scheduling and patient management, with relational modeling and application interfaces.">Proyecto académico grupal orientado a agendamiento y gestión de atención sanitaria, con modelado relacional e interfaces de aplicación.</p>
+            <div class="project-tags"><span>SQL Anywhere</span><span>JavaScript</span><span>Node.js</span></div>
+            <div class="project-links"><button class="inline-link" type="button" data-preview-video="video/hekopora-demo.mp4"><span data-en="Watch demo">Ver demostración</span> ▶</button></div>
+          </div>
+        </article>
 
-  <!-- Experiencia y formación -->
-  <section class="section shell trajectory-section" id="trayectoria" aria-labelledby="trajectory-title">
-    <div class="section-heading compact reveal">
-      <div><p class="eyebrow" data-en="03 — EXPERIENCE &amp; EDUCATION">03 — EXPERIENCIA Y FORMACIÓN</p><h2 id="trajectory-title" data-en-html='A path between <em>service and technology.</em>'>Una trayectoria entre <em>servicio y tecnología.</em></h2></div>
-      <p data-en="IT support experience, hands-on technical practice and ongoing studies in Systems Analysis.">Experiencia en soporte IT, práctica técnica y formación continua en Análisis de Sistemas.</p>
-    </div>
-    <div class="trajectory-columns">
-      <div class="trajectory-column reveal">
-        <h3><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg><span data-en="Experience">Experiencia</span></h3>
-        <div class="timeline">
-          <article class="t-item">
-            <p class="t-period" data-en="August 2025 — Present · Asunción">Agosto de 2025 — Actualidad · Asunción</p>
-            <h4>Help Desk</h4>
-            <p class="t-org" data-en="DIESA S.A. · IT Department">DIESA S.A. · Departamento de Informática</p>
-            <p class="t-desc" data-en="Handling, resolving and escalating support incidents and requests, tracked against established service levels.">Atención, resolución y derivación de incidentes y solicitudes de soporte, con seguimiento según los niveles de servicio establecidos.</p>
-            <ul>
-              <li data-en="Diagnosed, maintained and repaired equipment; supported hardware purchasing and license/inventory tracking.">Diagnóstico, mantenimiento y reparación de equipos; apoyo en compras e inventario de hardware y licencias.</li>
-              <li data-en="Managed email and domain accounts and access; administered the mail console and Microsoft licensing.">Gestión de cuentas y accesos de correo y dominio; administración de la consola de correo y licencias Microsoft.</li>
-              <li data-en="Configured VPN and internet connectivity for branch offices, and installed SAP on user workstations.">Configuración de VPN e internet para sucursales, e instalación de SAP en equipos de usuarios.</li>
-              <li data-en="Followed internal procedures and contributed to continuous improvement of service and the Quality Management System.">Cumplimiento de procedimientos internos y aporte a la mejora continua del servicio y del Sistema de Gestión de Calidad.</li>
-            </ul>
-          </article>
-          <article class="t-item">
-            <p class="t-period" data-en="December 2022 — January 2023 · Asunción">Diciembre de 2022 — Enero de 2023 · Asunción</p>
-            <h4 data-en="Technical support internship">Pasantía de soporte técnico</h4>
-            <p class="t-org">DIESA S.A. · Help Desk</p>
-            <p class="t-desc" data-en="Managed equipment inventory, carried out preventive maintenance on laptops and desktops, and prepared equipment for staff.">Control del inventario de equipos, mantenimiento preventivo de notebooks y computadoras, y preparación de equipos para el personal.</p>
-          </article>
-          <article class="t-item">
-            <p class="t-period">2022 · Asunción</p>
-            <h4 data-en="IT lab practicum">Prácticas de laboratorio de informática</h4>
-            <p class="t-org">Colegio Nacional Asunción Escalada</p>
-            <p class="t-desc" data-en="Assembled and maintained computers, installed operating systems, and coded web pages and sites.">Ensamblaje y mantenimiento de computadoras, instalación de sistemas operativos y codificación de páginas y sitios web.</p>
-          </article>
-        </div>
-
-        <div class="other-builds">
-          <p data-en="Other builds">Otros desarrollos</p>
-          <ul>
-            <li data-en="Static site for land sales.">Sitio estático para venta de lotes.</li>
-            <li data-en="Academic ticketing system with traceability.">Sistema académico de tickets con trazabilidad.</li>
-            <li data-en="Integration of a conversational AI model with PowerDesigner via MCP to query and modify data models.">Integración de un modelo conversacional con PowerDesigner mediante MCP para consultar y modificar modelos de datos.</li>
-          </ul>
-        </div>
+        <article class="project-card">
+          <div class="project-media art-media art-portfolio" aria-label="Identidad visual del portafolio personal" data-en-aria="Personal portfolio visual identity">
+            <div class="portfolio-browser">
+              <div class="portfolio-browser-top"><span></span><span></span><span></span></div>
+              <div class="portfolio-browser-body"><small>DAVID ESPÍNOLA</small><strong>Design.<br>Build.<br>Improve.</strong><div class="portfolio-lines"><i></i><i></i></div></div>
+            </div>
+          </div>
+          <div class="project-info">
+            <div class="project-topline"><span class="project-category" data-en="PERSONAL WEBSITE">SITIO PERSONAL</span><span class="status status-live"><span class="status-dot"></span><span data-en="Published">Publicado</span></span></div>
+            <h3>Portfolio <span class="project-number">/ 06</span></h3>
+            <p data-en="A bilingual, responsive portfolio to present my work, IT experience and technical projects. Published on GitHub Pages.">Portafolio bilingüe y adaptable para presentar mi trabajo, experiencia en IT y proyectos técnicos. Publicado con GitHub Pages.</p>
+            <div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>GitHub Pages</span></div>
+            <div class="project-links"><a href="https://github.com/d4vdxh1/david-espinola-portfolio" target="_blank" rel="noopener noreferrer"><span data-en="Source code">Ver código</span> ↗</a><a href="https://d4vdxh1.github.io/david-espinola-portfolio/" target="_blank" rel="noopener noreferrer"><span data-en="Live website">Ver sitio</span> ↗</a></div>
+          </div>
+        </article>
       </div>
+    </section>
 
-      <div class="trajectory-column reveal">
-        <h3><svg class="icon" viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5-10-5z"/><path d="M6 11v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg><span data-en="Education">Formación académica</span></h3>
-        <div class="timeline">
-          <article class="t-item">
-            <p class="t-period" data-en="March 2024 — Present">Marzo de 2024 — Actualidad</p>
-            <h4 data-en="Systems Analysis">Análisis de Sistemas</h4>
-            <p class="t-org">Universidad Católica de Asunción</p>
-            <p class="t-desc" data-en="6th semester">6.º semestre</p>
-          </article>
-          <article class="t-item">
-            <p class="t-period">2023</p>
-            <h4 data-en="Technical Baccalaureate in Computer Science">Bachiller Técnico en Informática</h4>
-            <p class="t-org">Colegio Nacional Asunción Escalada</p>
-            <p class="t-desc" data-en="Secondary education">Educación media</p>
-          </article>
-          <article class="t-item">
-            <p class="t-period">2020</p>
-            <h4 data-en="Basic Education">Educación Escolar Básica</h4>
-            <p class="t-org">Escuela Nuestra Señora del Perpetuo Socorro</p>
-          </article>
+    <section class="section container" id="formacion" aria-labelledby="education-title">
+      <div class="section-intro">
+        <p class="overline" data-en="04 / EDUCATION">04 / FORMACIÓN</p>
+        <h2 id="education-title" data-en="Education">Formación académica</h2>
+      </div>
+      <div class="timeline education-timeline">
+        <article class="timeline-item"><div class="timeline-period" data-en="2024 — PRESENT">2024 — ACTUALIDAD</div><div class="timeline-body"><div class="timeline-title"><h3 data-en="Systems Analysis">Análisis de Sistemas</h3><span class="timeline-company" data-en="Universidad Católica de Asunción">Universidad Católica de Asunción</span></div><p data-en="Sixth semester. Software engineering, databases, systems design and modeling.">Sexto semestre. Ingeniería de software, bases de datos, diseño y modelado de sistemas.</p></div></article>
+        <article class="timeline-item"><div class="timeline-period">2023</div><div class="timeline-body"><div class="timeline-title"><h3 data-en="Technical Baccalaureate in Computer Science">Bachiller Técnico en Informática</h3><span class="timeline-company">Colegio Nacional Asunción Escalada</span></div></div></article>
+      </div>
+    </section>
+
+    <section class="section container" id="habilidades" aria-labelledby="skills-title">
+      <div class="section-intro">
+        <p class="overline" data-en="05 / TOOLKIT">05 / HERRAMIENTAS</p>
+        <h2 id="skills-title" data-en="Tools & technologies">Herramientas y tecnologías</h2>
+        <p data-en="Tools I use in my work, studies and software projects.">Tecnologías que utilizo en mi trabajo, estudios y proyectos.</p>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-group"><h3 data-en="Software development">Desarrollo</h3><div class="chips"><span>JavaScript</span><span>TypeScript</span><span>PHP</span><span>Python</span><span>HTML/CSS</span><span>React</span><span>Next.js</span><span>Node.js</span><span>Java (básico)</span></div></div>
+        <div class="skill-group"><h3 data-en="Data & modeling">Datos y modelado</h3><div class="chips"><span>MySQL</span><span>SQL Server</span><span>PostgreSQL</span><span>SQL Anywhere</span><span>PowerDesigner</span><span>SQL</span></div></div>
+        <div class="skill-group"><h3 data-en="Infrastructure & tools">Infraestructura y herramientas</h3><div class="chips"><span>Git / GitHub</span><span>Docker</span><span>Ubuntu Server</span><span>VS Code</span><span>MCP</span><span data-en="IT support">Soporte IT</span></div></div>
+      </div>
+      <div class="languages"><span class="mono" data-en="LANGUAGES">IDIOMAS</span><span data-en="Spanish · Fluent">Español · Fluido</span><span data-en="Guaraní · Intermediate">Guaraní · Intermedio</span><span data-en="English · Intermediate">Inglés · Intermedio</span></div>
+    </section>
+
+    <section class="section container" id="reconocimientos" aria-labelledby="recognition-title">
+      <div class="section-intro">
+        <p class="overline" data-en="06 / MILESTONES">06 / HITOS</p>
+        <h2 id="recognition-title" data-en="Recognition & learning">Reconocimientos y aprendizaje</h2>
+      </div>
+      <div class="milestones">
+        <div class="milestone"><span class="milestone-year">2026</span><div><h3 data-en="Business Intelligence & AI Hackathon">Hackathon de Inteligencia de Negocios e IA</h3><p data-en="Certified participation · Data Platform Paraguay, 3rd edition.">Participación certificada · 3.ª edición, Data Platform Paraguay.</p></div></div>
+        <div class="milestone"><span class="milestone-year">2024</span><div><h3 data-en="Paraguay Government / Itaipú Scholarship">Beca del Gobierno del Paraguay / Itaipú</h3><p data-en="Scholarship awarded through the program's selection process.">Beca obtenida mediante el proceso de selección del programa.</p></div></div>
+      </div>
+    </section>
+
+    <section class="section container contact-section" id="contacto" aria-labelledby="contact-title">
+      <div class="contact-box">
+        <p class="overline" data-en="07 / LET'S CONNECT">07 / CONECTEMOS</p>
+        <h2 id="contact-title" data-en-html="Have a project in mind?<br><span>Let's talk.</span>">¿Tenés un proyecto en mente?<br><span>Conversemos.</span></h2>
+        <p data-en="I'm interested in software development, systems integration and technology challenges. You can contact me through any of these channels.">Me interesan el desarrollo de software, la integración de sistemas y los desafíos tecnológicos. Podés contactarme por cualquiera de estos medios.</p>
+        <div class="contact-buttons">
+          <a class="button button-primary" href="mailto:davideesspinola@gmail.com"><span data-en="Send email">Enviar correo</span> ↗</a>
+          <a class="button button-secondary" href="https://www.linkedin.com/in/david-esp%C3%ADnola-032148446/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+          <a class="button button-secondary" href="https://github.com/d4vdxh1" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Habilidades -->
-  <section class="section shell" id="habilidades" aria-labelledby="skills-title">
-    <div class="section-heading compact reveal">
-      <div><p class="eyebrow" data-en="04 — EXPERTISE">04 — CONOCIMIENTOS</p><h2 id="skills-title" data-en-html='Tools to <em>solve.</em>'>Herramientas para <em>resolver.</em></h2></div>
-      <p data-en="Web development, data, IT support and business intelligence.">Desarrollo web, datos, soporte informático e inteligencia de negocios.</p>
-    </div>
-    <div class="skill-groups">
-      <article class="skill-card reveal">
-        <div class="skill-head"><svg class="icon" viewBox="0 0 24 24"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4"/></svg><h3 data-en="Development">Desarrollo</h3></div>
-        <ul class="skill-tags">
-          <li>HTML5</li><li>CSS</li><li>JavaScript</li><li>PHP</li><li>Python</li><li>React</li><li>Node.js</li><li>Bootstrap</li><li data-en="Java (basic)">Java (básico)</li>
-        </ul>
-      </article>
-      <article class="skill-card reveal">
-        <div class="skill-head"><svg class="icon" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v6c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 11v6c0 1.66 4 3 9 3s9-1.34 9-3v-6"/></svg><h3 data-en="Data &amp; business intelligence">Datos e inteligencia de negocios</h3></div>
-        <ul class="skill-tags">
-          <li>SQL</li><li>MySQL</li><li>SQL Server</li><li>PostgreSQL</li><li>Sybase SQL Anywhere</li><li data-en="Relational modeling">Modelado relacional</li><li data-en="Star schema">Esquema estrella</li><li>Power BI</li>
-        </ul>
-      </article>
-      <article class="skill-card reveal">
-        <div class="skill-head"><svg class="icon" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.1-3.1a6 6 0 0 1-8 8l-6.6 6.6a2.1 2.1 0 0 1-3-3l6.6-6.6a6 6 0 0 1 8-8z"/></svg><h3 data-en="Tools &amp; applied AI">Herramientas e IA aplicada</h3></div>
-        <ul class="skill-tags">
-          <li data-en="Git &amp; GitHub">Git y GitHub</li><li>Docker</li><li>Ubuntu Server</li><li>PowerDesigner</li><li>VS Code</li><li data-en="PyCharm (basic)">PyCharm (básico)</li><li data-en="NetBeans (basic)">NetBeans (básico)</li><li data-en="AI-assisted dev">Dev. asistido por IA</li><li>MCP</li>
-        </ul>
-      </article>
-      <article class="skill-card reveal">
-        <div class="skill-head"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg><h3 data-en="Office &amp; soft skills">Ofimática y competencias</h3></div>
-        <ul class="skill-tags">
-          <li>Word</li><li>Excel</li><li>PowerPoint</li><li data-en="Communication">Comunicación</li><li data-en="Teamwork">Trabajo en equipo</li><li data-en="Analysis">Análisis</li><li data-en="Accountability">Responsabilidad</li><li data-en="Punctuality">Puntualidad</li>
-        </ul>
-      </article>
-    </div>
-    <div class="lang-panel reveal">
-      <div><p class="eyebrow" data-en="LANGUAGES">IDIOMAS</p><h3 data-en="Communicating in three languages.">Comunicación en tres idiomas.</h3></div>
-      <div class="lang-list">
-        <div class="lang-item"><span data-en="Spanish">Español</span><strong data-en="Fluent">Fluido</strong></div>
-        <div class="lang-item"><span data-en="English">Inglés</span><strong data-en="Intermediate">Intermedio</strong></div>
-        <div class="lang-item"><span>Guaraní</span><strong data-en="Intermediate">Intermedio</strong></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Reconocimientos -->
-  <section class="section shell" id="reconocimientos" aria-labelledby="recognitions-title">
-    <div class="section-heading compact reveal">
-      <div><p class="eyebrow" data-en="05 — RECOGNITION">05 — RECONOCIMIENTOS</p><h2 id="recognitions-title" data-en-html='Learning and <em>merit.</em>'>Aprendizaje y <em>mérito.</em></h2></div>
-      <p data-en="Recent participations and scholarships.">Participaciones y becas recientes.</p>
-    </div>
-    <div class="rec-list">
-      <article class="rec-item reveal">
-        <div class="rec-badge"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5 7 21l5-3 5 3-1.5-8.5"/></svg></div>
-        <div><p class="rec-date" data-en="October 2026">Octubre de 2026</p><h3 data-en="Business Intelligence &amp; AI Hackathon">Hackathon de Inteligencia de Negocios e IA</h3><p data-en="Certified participant · 3rd edition, Data Platform Paraguay">Participación certificada · 3.ª edición, Data Platform Paraguay</p></div>
-      </article>
-      <article class="rec-item reveal">
-        <div class="rec-badge"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5 7 21l5-3 5 3-1.5-8.5"/></svg></div>
-        <div><p class="rec-date" data-en="March 2024">Marzo de 2024</p><h3 data-en="Paraguay Government / Itaipú Scholarship Program">Beca del Programa de Becas del Gobierno del Paraguay / Itaipú</h3><p data-en="Selected after meeting the program's requirements">Seleccionado tras cumplir los requisitos del programa</p></div>
-      </article>
-    </div>
-  </section>
-
-  <!-- Contacto -->
-  <section class="section shell" id="contacto" style="padding-bottom: 76px" aria-labelledby="contact-title">
-    <div class="contact-panel reveal">
-      <div class="contact-copy">
-        <p class="eyebrow" data-en="06 — CONTACT">06 — CONTACTO</p>
-        <h2 id="contact-title" data-en-html="Let&#39;s talk about the &lt;em&gt;next&lt;/em&gt; challenge?">¿Hablamos del <em>siguiente</em> desafío?</h2>
-        <p data-en="Open to connecting about IT support, software development and technology projects.">Disponible para conectar sobre soporte informático, desarrollo de software y proyectos tecnológicos.</p>
-        <a class="btn btn-primary" href="cv-nestor-espinola.pdf.pdf" download><span data-en="Download CV">Descargar CV</span> <svg class="icon sm" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg></a>
-      </div>
-      <div class="contact-actions">
-        <a class="contact-link" href="mailto:davideesspinola@gmail.com">
-          <span><svg class="icon" viewBox="0 0 24 24"><path d="M3 6h18v12H3z"/><path d="M3 7l9 6 9-6"/></svg></span>
-          <span><strong data-en="Email">Correo</strong><small>davideesspinola@gmail.com</small></span>
-          <svg class="icon sm" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg>
-        </a>
-        <a class="contact-link" href="https://github.com/d4vdxh1" target="_blank" rel="noreferrer">
-          <span><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg></span>
-          <span><strong>GitHub</strong><small>github.com/d4vdxh1</small></span>
-          <svg class="icon sm" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg>
-        </a>
-        <a class="contact-link" href="https://www.linkedin.com/in/david-espínola-032148446" target="_blank" rel="noreferrer">
-          <span><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 11v6M8 8v.01M12 17v-4a2 2 0 0 1 4 0v4"/></svg></span>
-          <span><strong>LinkedIn</strong><small>David Espínola</small></span>
-          <svg class="icon sm" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg>
-        </a>
-      </div>
-    </div>
-  </section>
-</main>
-
-<footer class="footer shell">
-  <div class="footer-brand"><span class="brand-mark" style="width:26px;height:26px;border-radius:8px;font-size:11px">DE</span><span>David Espínola Delvalle</span></div>
-  <p data-en="IT Support · Software Development · Asunción, Paraguay">Soporte IT · Desarrollo de software · Asunción, Paraguay</p>
-  <p>© <span id="year">2026</span></p>
-</footer>
-
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Vista ampliada" data-en-aria="Enlarged view" hidden>
-  <button class="lightbox-close" id="lightbox-close" type="button" aria-label="Cerrar" data-en-aria="Close">
-    <svg class="icon" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>
-  </button>
-  <div class="lightbox-content" id="lightbox-content"></div>
-</div>
-
-<script src="data.js"></script>
-<script src="app.js"></script>
+    </section>
+  </main>
+  <footer class="footer container"><span>© <span id="year">2026</span> David Espínola</span><span data-en="Made with care in Paraguay">Hecho con atención al detalle en Paraguay</span><a href="#arriba" data-en="Back to top ↑">Volver arriba ↑</a></footer>
+  <dialog id="media-dialog" class="media-dialog" aria-label="Vista ampliada" data-en-aria="Expanded media view"><button class="dialog-close" id="dialog-close" type="button" aria-label="Cerrar" data-en-aria="Close">×</button><div class="dialog-content" id="dialog-content"></div></dialog>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
