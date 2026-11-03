@@ -62,6 +62,10 @@ document.addEventListener("DOMContentLoaded", () => {
       el.setAttribute("aria-label", lang === "en" ? el.dataset.enAria : el.dataset.esAria);
     });
 
+    document.querySelectorAll(".showcase-gallery").forEach((gallery) => {
+      gallery.dispatchEvent(new Event("portfolio:language"));
+    });
+
     const titleEl = document.getElementById("document-title");
     if (titleEl) {
       if (!titleEl.dataset.esTitle) titleEl.dataset.esTitle = titleEl.textContent;
@@ -217,6 +221,53 @@ document.addEventListener("DOMContentLoaded", () => {
     if (prefersReducedMotion) finish();
     else closeTimer = setTimeout(finish, 230);
   }
+
+  // Galerías de casos reales: un visor grande y miniaturas sin superposición.
+  // Se respeta el texto accesible en ambos idiomas.
+  const showcaseGalleries = document.querySelectorAll(".showcase-gallery");
+  showcaseGalleries.forEach((gallery) => {
+    const mainButton = gallery.querySelector(".showcase-main");
+    const mainImage = gallery.querySelector(".showcase-main-image");
+    const thumbnails = [...gallery.querySelectorAll(".showcase-thumb")];
+    const counter = gallery.querySelector(".showcase-count");
+    if (!mainButton || !mainImage) return;
+
+    const selectScreenshot = (index, moveFocus = false) => {
+      const thumb = thumbnails[index];
+      if (!thumb) return;
+      const lang = document.documentElement.lang === "en" ? "en" : "es";
+      mainImage.src = thumb.dataset.full;
+      mainImage.alt = thumb.dataset[lang === "en" ? "altEn" : "altEs"] || thumb.dataset.altEs || "";
+      thumbnails.forEach((other, otherIndex) => {
+        const active = otherIndex === index;
+        other.classList.toggle("is-active", active);
+        other.setAttribute("aria-pressed", String(active));
+      });
+      if (counter) counter.textContent = String(index + 1).padStart(2, "0") + " / " + String(thumbnails.length).padStart(2, "0");
+      if (moveFocus) thumb.focus();
+    };
+
+    thumbnails.forEach((thumb, index) => {
+      thumb.addEventListener("click", () => selectScreenshot(index));
+      thumb.addEventListener("keydown", (event) => {
+        if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
+        event.preventDefault();
+        const next = (index + (event.key === "ArrowRight" ? 1 : -1) + thumbnails.length) % thumbnails.length;
+        selectScreenshot(next, true);
+      });
+    });
+    mainButton.addEventListener("click", () => {
+      const big = document.createElement("img");
+      big.src = mainImage.src;
+      big.alt = mainImage.alt;
+      openLightbox(big);
+    });
+    // El cambio de idioma también se refleja en el alt de la imagen activa.
+    gallery.addEventListener("portfolio:language", () => {
+      const index = Math.max(0, thumbnails.findIndex((thumb) => thumb.classList.contains("is-active")));
+      if (thumbnails.length) selectScreenshot(index);
+    });
+  });
 
   document.querySelectorAll(".project-gallery > img").forEach((img) => {
     img.setAttribute("tabindex", "0");
