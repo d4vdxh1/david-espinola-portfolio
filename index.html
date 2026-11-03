@@ -38,60 +38,56 @@
 </header>
 
 <main id="main">
-  <!-- Hero editorial / portfolio v2 -->
-  <section class="hero shell" id="inicio" aria-labelledby="hero-title">
-    <div class="hero-copy reveal">
-      <div class="hero-kicker">
+  <!-- Hero centrado: el trabajo es protagonista, no la fotografía -->
+  <section class="hero hero--centered shell" id="inicio" aria-labelledby="hero-title">
+    <div class="hero-atmosphere" aria-hidden="true">
+      <span class="hero-halo hero-halo--one"></span>
+      <span class="hero-halo hero-halo--two"></span>
+      <span class="hero-halo hero-halo--three"></span>
+      <span class="hero-spark hero-spark--one"></span>
+      <span class="hero-spark hero-spark--two"></span>
+      <span class="hero-spark hero-spark--three"></span>
+    </div>
+    <div class="hero-content reveal">
+      <div class="hero-status">
         <span class="availability-dot" aria-hidden="true"></span>
-        <span data-en="IT SUPPORT / SOFTWARE DEVELOPMENT">SOPORTE IT / DESARROLLO DE SOFTWARE</span>
-        <span class="hero-kicker-line" aria-hidden="true"></span>
+        <span data-en="IT SUPPORT · SOFTWARE DEVELOPMENT">SOPORTE IT · DESARROLLO DE SOFTWARE</span>
       </div>
-      <p class="hero-overline" data-en="HELLO, I'M DAVID ESPÍNOLA">HOLA, SOY DAVID ESPÍNOLA</p>
-      <h1 id="hero-title" data-en-html='Technology that <em>solves real problems.</em>'>Tecnología que <em>resuelve problemas reales.</em></h1>
-      <p class="hero-intro" data-en="I create digital experiences and build systems that make daily work simpler. I combine hands-on IT support with software development.">Creo experiencias digitales y desarrollo sistemas que hacen más simple el trabajo diario. Combino la práctica en soporte informático con el desarrollo de software.</p>
-      <p class="hero-summary" data-en="Systems Analysis student, IT Help Desk at DIESA S.A. and passionate about building practical solutions, automation and cybersecurity.">Estudiante de Análisis de Sistemas, Help Desk en DIESA S.A. y apasionado por construir soluciones útiles, automatización y ciberseguridad.</p>
+      <h1 id="hero-title" data-en-html='I build digital solutions <em>that work.</em>'>Construyo soluciones digitales <em>que funcionan.</em></h1>
+      <p class="hero-intro" data-en="I'm David Espínola. I build web applications and management systems, combining hands-on IT support with my Systems Analysis studies.">
+        Soy David Espínola. Desarrollo aplicaciones web y sistemas de gestión combinando mi experiencia en soporte informático con mis estudios en Análisis de Sistemas.
+      </p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="#proyectos"><span data-en="Explore my work">Explorar proyectos</span><svg class="icon sm" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
-        <a class="btn btn-outline" href="cv-nestor-espinola.pdf.pdf" download><span data-en="Download CV">Descargar CV</span><svg class="icon sm" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg></a>
+        <a class="btn btn-primary" href="#proyectos">
+          <span data-en="Explore my projects">Explorar proyectos</span>
+          <svg class="icon sm" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></svg>
+        </a>
+        <a class="btn btn-outline" href="cv-nestor-espinola.pdf.pdf" download>
+          <span data-en="Download CV">Descargar CV</span>
+          <svg class="icon sm" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>
+        </a>
       </div>
-      <div class="hero-metrics" aria-label="Resumen profesional" data-en-aria="Professional overview">
-        <div><strong>03<span>+</span></strong><small data-en="Featured projects">Proyectos destacados</small></div>
-        <div><strong>2025</strong><small data-en="IT role since">En soporte IT desde</small></div>
-        <div><strong>06<span>º</span></strong><small data-en="Academic semester">Semestre universitario</small></div>
+      <div class="hero-credentials" aria-label="Resumen profesional" data-en-aria="Professional summary">
+        <span>Help Desk · DIESA S.A.</span>
+        <i aria-hidden="true"></i>
+        <span data-en="Systems Analysis · UCA">Análisis de Sistemas · UCA</span>
+        <i aria-hidden="true"></i>
+        <span>Asunción · Paraguay</span>
       </div>
     </div>
-
-    <div class="hero-stage reveal" aria-label="Identidad y especialidades de David Espínola" data-en-aria="David Espínola identity and specialties">
-      <div class="stage-grid" aria-hidden="true"></div>
-      <div class="stage-orbit stage-orbit-one" aria-hidden="true"></div>
-      <div class="stage-orbit stage-orbit-two" aria-hidden="true"></div>
-      <div class="stage-topline"><span>DAVID / PORTFOLIO</span><span class="stage-live"><i aria-hidden="true"></i> ONLINE</span></div>
-      <div class="stage-main">
-        <div class="stage-photo-frame"><img src="foto.jpg" alt="Fotografía de David Espínola" width="280" height="280" fetchpriority="high" /></div>
-        <div class="stage-name">DAVID<span>ESPÍNOLA</span></div>
-        <p data-en="IT Support &amp; Software Developer">Soporte IT &amp; Desarrollo de Software</p>
-        <div class="stage-tags"><span>PHP / JS</span><span>DATABASES</span><span>DOCKER</span></div>
-      </div>
-      <div class="stage-console" aria-hidden="true">
-        <div class="console-bar"><i></i><i></i><i></i><span>profile.ts — skills</span></div>
-        <code><span class="code-blue">const</span> david = {<br>&nbsp;&nbsp;role: <span class="code-green">"Help Desk + Dev"</span>,<br>&nbsp;&nbsp;focus: <span class="code-green">"Build &amp; improve"</span><br>};</code>
-      </div>
-      <div class="stage-float stage-float-a"><span class="float-symbol">✳</span><span><strong data-en="Building products">Creando soluciones</strong><small data-en="Driven by curiosity">Impulsado por la curiosidad</small></span></div>
-      <div class="stage-float stage-float-b"><span class="float-symbol">↗</span><span><strong data-en="Based in Paraguay">Desde Paraguay</strong><small>Asunción · PY</small></span></div>
-    </div>
-    <div class="hero-bottombar" aria-hidden="true">
-      <span>DESIGN / BUILD / IMPROVE</span>
-      <div class="hero-bottomline"></div>
-      <span>SCROLL TO EXPLORE <span class="scroll-arrow">↓</span></span>
-    </div>
+    <a class="hero-scroll-link" href="#proyectos">
+      <span data-en="Discover my work">Descubrí mi trabajo</span>
+      <svg class="icon" viewBox="0 0 24 24"><path d="M12 5v14m-7-7 7 7 7-7"/></svg>
+    </a>
   </section>
 
   <!-- Selected work -->
   <section class="section shell projects-section" id="proyectos" aria-labelledby="projects-title">
-    <div class="section-heading reveal">
-      <div><p class="eyebrow" data-en="01 / SELECTED WORK">01 / TRABAJOS DESTACADOS</p>
-      <h2 id="projects-title" data-en-html='Projects with <em>real impact.</em>'>Proyectos con <em>impacto real.</em></h2></div>
-      <p data-en="From published web platforms to internal support tools and academic systems. A look at what I have designed and built.">Desde plataformas web publicadas hasta herramientas internas de soporte y sistemas académicos. Una muestra de lo que diseñé y desarrollé.</p>
+    <div class="section-heading section-heading--centered reveal">
+      <p class="eyebrow" data-en="01 / FEATURED PROJECTS">01 / PROYECTOS DESTACADOS</p>
+      <h2 id="projects-title" data-en-html='Selected <em>projects.</em>'>Proyectos <em>seleccionados.</em></h2>
+      <p data-en="Real systems, real challenges and a closer look at the interfaces I built.">Sistemas reales, desafíos concretos y una mirada a las interfaces que desarrollé.</p>
+      <span class="section-underline" aria-hidden="true"></span>
     </div>
     <div class="project-list">
       <article class="project-card project-card--ajac reveal">
@@ -113,7 +109,6 @@
           <p class="project-lead" data-en="A digital space that connects the community through events, news, galleries and notifications.">Un espacio digital que conecta a la comunidad mediante eventos, noticias, galerías y notificaciones.</p>
           <div class="project-divider"></div>
           <dl>
-            <div class="project-field"><dt data-en="The challenge">El desafío</dt><dd data-en="Centralize events, media and communications into a platform with its own administration panel.">Centralizar eventos, contenidos y comunicaciones en una plataforma con su propio panel de administración.</dd></div>
             <div class="project-field"><dt data-en="My contribution">Mi aporte</dt><dd data-en="End-to-end development and publication of the site.">Desarrollo integral y publicación del sitio.</dd></div>
           </dl>
           <ul class="project-stack" aria-label="Tecnologías"><li>React</li><li>JavaScript</li><li>Tailwind</li><li>Firebase</li><li>Cloudinary</li><li>OneSignal</li></ul>
@@ -152,11 +147,10 @@
           <p class="project-lead" data-en="Organized support requests, better traceability and a more transparent workflow for IT teams.">Solicitudes de soporte organizadas, mayor trazabilidad y un flujo de trabajo más claro para equipos de informática.</p>
           <div class="project-divider"></div>
           <dl>
-            <div class="project-field"><dt data-en="The challenge">El desafío</dt><dd data-en="Centralize IT incidents and requests, from registration to resolution.">Centralizar incidentes y solicitudes informáticas, desde el registro hasta la resolución.</dd></div>
             <div class="project-field"><dt data-en="My contribution">Mi aporte</dt><dd data-en="System design and development, database, APIs and test environment.">Diseño y desarrollo del sistema, base de datos, APIs y entorno de pruebas.</dd></div>
           </dl>
           <ul class="project-stack" aria-label="Tecnologías"><li>PHP</li><li>JavaScript</li><li>MySQL</li><li>Docker</li><li>Ubuntu Server</li></ul>
-          <div class="project-action project-action--static"><span data-en="Private internal project · Screens available">Proyecto interno privado · Capturas disponibles</span><span class="project-action-icon" aria-hidden="true">↗</span></div>
+          <p class="project-private-note" data-en="Internal project · Screenshots available above">Proyecto interno · Capturas disponibles arriba</p>
         </div>
       </article>
 
@@ -184,11 +178,10 @@
           <p class="project-lead" data-en="A solution for organizing patient appointments, consultations and healthcare operations.">Una solución para organizar turnos, consultas y procesos de atención de pacientes.</p>
           <div class="project-divider"></div>
           <dl>
-            <div class="project-field"><dt data-en="The challenge">El desafío</dt><dd data-en="Coordinate appointments, patients, professionals and coverage from one place.">Coordinar turnos, pacientes, profesionales y coberturas desde un mismo lugar.</dd></div>
             <div class="project-field"><dt data-en="My contribution">Mi aporte</dt><dd data-en="Frontend design, backend API integration, database modeling and validation.">Diseño frontend, integración de APIs, modelado de base de datos y validaciones.</dd></div>
           </dl>
           <ul class="project-stack" aria-label="Tecnologías"><li>HTML5</li><li>JavaScript</li><li>Bootstrap</li><li>Node.js</li><li>Sybase</li></ul>
-          <div class="project-action project-action--static"><span data-en="Academic project · Screenshot and demo available">Proyecto académico · Captura y video disponibles</span><span class="project-action-icon" aria-hidden="true">↗</span></div>
+          <p class="project-private-note" data-en="Academic group project · Real interface and demo">Proyecto académico grupal · Interfaz y demo reales</p>
         </div>
       </article>
     </div>
@@ -199,7 +192,7 @@
     <div class="about-statement reveal">
       <p class="eyebrow" data-en="02 — ABOUT ME">02 — SOBRE MÍ</p>
       <h2 id="about-title" data-en-html='People, systems and solutions that <em>work.</em>'>Personas, sistemas y soluciones que <em>funcionan.</em></h2>
-      <p data-en="Advanced Systems Analysis student with hands-on experience in IT support, equipment maintenance and access management. I combine user contact with building solutions.">Estudiante avanzado de Análisis de Sistemas con experiencia aplicada en soporte informático, mantenimiento de equipos y gestión de accesos. Combino el contacto con usuarios con la construcción de soluciones.</p>
+      <p data-en="I start by understanding what people need. From there, I propose improvements, build practical tools and help put them into use.">Mi trabajo comienza entendiendo las necesidades de las personas. A partir de ellas, propongo mejoras, construyo herramientas y acompaño su implementación.</p>
       <a class="btn btn-outline" href="#contacto"><span data-en="Let's talk">Conversemos</span> <svg class="icon sm" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
     </div>
     <div class="about-notes reveal">
