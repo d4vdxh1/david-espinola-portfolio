@@ -267,6 +267,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const index = Math.max(0, thumbnails.findIndex((thumb) => thumb.classList.contains("is-active")));
       if (thumbnails.length) selectScreenshot(index);
     });
+    if (thumbnails.length) selectScreenshot(0); // Inicializa también el idioma recuperado de localStorage.
   });
 
   document.querySelectorAll(".project-gallery > img").forEach((img) => {
