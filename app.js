@@ -8,20 +8,33 @@
 document.addEventListener("DOMContentLoaded", () => {
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  // Menú de navegación en móvil
+  // Menú móvil: transiciones reversibles, salida con Escape y clic externo.
   const menu = document.getElementById("menu");
   const menuToggle = document.getElementById("menu-toggle");
   if (menu && menuToggle) {
-    menuToggle.addEventListener("click", () => {
-      const open = menu.classList.toggle("open");
+    const setMenuOpen = (open) => {
+      menu.classList.toggle("open", open);
       menuToggle.setAttribute("aria-expanded", String(open));
-    });
+    };
+    menuToggle.addEventListener("click", () => setMenuOpen(!menu.classList.contains("open")));
     menu.querySelectorAll("a").forEach((link) =>
-      link.addEventListener("click", () => {
-        menu.classList.remove("open");
-        menuToggle.setAttribute("aria-expanded", "false");
-      })
+      link.addEventListener("click", () => setMenuOpen(false))
     );
+    document.addEventListener("pointerdown", (event) => {
+      if (menu.classList.contains("open") &&
+          !menu.contains(event.target) && !menuToggle.contains(event.target)) {
+        setMenuOpen(false);
+      }
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && menu.classList.contains("open")) {
+        setMenuOpen(false);
+        menuToggle.focus();
+      }
+    });
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 760) setMenuOpen(false);
+    }, { passive: true });
   }
 
   // Selector de idioma (ES/EN). El español ya está en el HTML por defecto;
@@ -77,17 +90,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  // Animación suave al hacer scroll (se repite al subir y al bajar).
-  // Si el usuario prefiere menos movimiento, el contenido ya es visible
-  // por defecto (ver prefers-reduced-motion en styles.css) y esto no corre.
+  // Revelado una sola vez: sin parpadeo al volver a desplazarse.
   if (!prefersReducedMotion && "IntersectionObserver" in window) {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          entry.target.classList.toggle("is-visible", entry.isIntersecting);
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
         });
       },
-      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+      { threshold: 0.08, rootMargin: "0px 0px -5% 0px" }
     );
     document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
   } else {
@@ -117,27 +130,92 @@ document.addEventListener("DOMContentLoaded", () => {
     update();
   }
 
+
+  // Indicador discreto de la sección que se está leyendo.
+  const sectionLinks = Array.from(document.querySelectorAll('.nav-links a[href^="#"]'));
+  if ("IntersectionObserver" in window && sectionLinks.length) {
+    const lookup = new Map(sectionLinks.map((link) => [link.getAttribute("href").slice(1), link]));
+    const activeObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        sectionLinks.forEach((link) => {
+          link.classList.remove("is-current");
+          link.removeAttribute("aria-current");
+        });
+        const active = lookup.get(entry.target.id);
+        if (active) {
+          active.classList.add("is-current");
+          active.setAttribute("aria-current", "location");
+        }
+      });
+    }, { rootMargin: "-28% 0px -60% 0px", threshold: 0 });
+    lookup.forEach((_, id) => {
+      const section = document.getElementById(id);
+      if (section) activeObserver.observe(section);
+    });
+  }
+
+  // Progreso de la trayectoria: solo transformaciones, sin bibliotecas.
+  const timelines = Array.from(document.querySelectorAll(".timeline"));
+  if (timelines.length && !prefersReducedMotion) {
+    let timelineQueued = false;
+    const drawTimelines = () => {
+      const viewportMark = window.innerHeight * 0.72;
+      timelines.forEach((timeline) => {
+        const rect = timeline.getBoundingClientRect();
+        const progressValue = Math.max(0, Math.min(1, (viewportMark - rect.top) / Math.max(rect.height, 1)));
+        timeline.style.setProperty("--line-progress", String(progressValue));
+      });
+      timelineQueued = false;
+    };
+    const queueTimelines = () => {
+      if (timelineQueued) return;
+      timelineQueued = true;
+      requestAnimationFrame(drawTimelines);
+    };
+    window.addEventListener("scroll", queueTimelines, { passive: true });
+    window.addEventListener("resize", queueTimelines, { passive: true });
+    queueTimelines();
+  }
+
   // Lightbox: amplía capturas y reproduce el video al hacer click.
   const lightbox = document.getElementById("lightbox");
   const lightboxContent = document.getElementById("lightbox-content");
   const lightboxClose = document.getElementById("lightbox-close");
   let lastFocused = null;
+  let closeTimer = null;
 
   function openLightbox(node) {
+    if (!lightbox || !lightboxContent || !lightboxClose) return;
+    if (closeTimer !== null) {
+      clearTimeout(closeTimer);
+      closeTimer = null;
+    }
     lastFocused = document.activeElement;
-    lightboxContent.innerHTML = "";
-    lightboxContent.appendChild(node);
+    lightboxContent.replaceChildren(node);
     lightbox.hidden = false;
+    document.body.classList.add("lightbox-active");
+    requestAnimationFrame(() => {
+      if (!lightbox.hidden) lightbox.classList.add("is-open");
+    });
     lightboxClose.focus();
-    document.body.style.overflow = "hidden";
   }
+
   function closeLightbox() {
+    if (!lightbox || lightbox.hidden) return;
     const video = lightboxContent.querySelector("video");
     if (video) video.pause();
-    lightbox.hidden = true;
-    lightboxContent.innerHTML = "";
-    document.body.style.overflow = "";
-    if (lastFocused) lastFocused.focus();
+    lightbox.classList.remove("is-open");
+    const restoreFocus = lastFocused;
+    const finish = () => {
+      lightbox.hidden = true;
+      lightboxContent.replaceChildren();
+      document.body.classList.remove("lightbox-active");
+      if (restoreFocus && typeof restoreFocus.focus === "function") restoreFocus.focus();
+      closeTimer = null;
+    };
+    if (prefersReducedMotion) finish();
+    else closeTimer = setTimeout(finish, 230);
   }
 
   document.querySelectorAll(".project-gallery > img").forEach((img) => {
@@ -168,7 +246,24 @@ document.addEventListener("DOMContentLoaded", () => {
   if (lightboxClose) lightboxClose.addEventListener("click", closeLightbox);
   if (lightbox) {
     lightbox.addEventListener("click", (e) => { if (e.target === lightbox) closeLightbox(); });
-    document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !lightbox.hidden) closeLightbox(); });
+    document.addEventListener("keydown", (event) => {
+      if (lightbox.hidden) return;
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closeLightbox();
+      }
+      if (event.key !== "Tab") return;
+      const focusable = [lightboxClose, ...lightboxContent.querySelectorAll('a[href], button, video[controls], [tabindex]:not([tabindex="-1"])')];
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    });
   }
 
   // Datos estructurados (JSON-LD) para buscadores, a partir de data.js.
