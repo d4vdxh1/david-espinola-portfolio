@@ -353,3 +353,29 @@ html.motion-ready .motion-enter:not(.motion-shown) {
   }
   body::before { transition: none !important; }
 }
+
+
+/* Photo-hero layout matching the reviewed, compact portfolio preview. */
+.hero { grid-template-columns: minmax(0, 1fr) minmax(270px, 315px); gap: clamp(26px, 4vw, 48px); padding-block: 65px 60px; }
+.hero-title-row { display: flex; align-items: center; gap: 23px; margin-top: 12px; }
+.hero-title-row h1 { flex: 1 1 auto; min-width: 0; font-size: clamp(37px, 4.35vw, 55px); line-height: 1.115; }
+.hero-title-row h1 span { display: block; }
+.profile-photo { width: 106px; height: 106px; flex: 0 0 106px; border: 3px solid var(--bg); outline: 1px solid var(--line); border-radius: 50%; background: var(--surface-2); box-shadow: 0 12px 30px rgba(0,0,0,.17); overflow: hidden; }
+.profile-photo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 29%; filter: saturate(.9) contrast(1.025); }
+.hero-description { margin-top: 20px; }
+.hero-actions { margin-top: 24px; }
+.hero-meta { margin-top: 24px; }
+@media (max-width: 850px) {
+  .hero { grid-template-columns: 1fr; padding-block: 54px 48px; gap: 22px; }
+  .hero-title-row h1 { font-size: clamp(37px, 5.8vw, 55px); }
+}
+@media (max-width: 700px) {
+  .hero { padding-block: 44px 42px; }
+  .hero-title-row { gap: 13px; }
+  .hero-title-row h1 { font-size: clamp(31px, 7.2vw, 42px); }
+  .profile-photo { width: 78px; height: 78px; flex-basis: 78px; }
+}
+@media (max-width: 390px) {
+  .hero-title-row h1 { font-size: 30px; }
+  .profile-photo { width: 67px; height: 67px; flex-basis: 67px; }
+}
