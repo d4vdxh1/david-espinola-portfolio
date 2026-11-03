@@ -292,8 +292,9 @@ h2 { max-width: 700px; margin: 10px 0 0; font-size: clamp(30px, 3.5vw, 46px); li
 .footer-brand { display: flex; align-items: center; gap: 9px; color: var(--muted); font-weight: 700; }
 
 /* Animación suave al hacer scroll */
-.reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s var(--ease), transform .6s var(--ease); }
-.reveal.is-visible { opacity: 1; transform: translateY(0); }
+.reveal { opacity: 1; transform: none; }
+.js .reveal { opacity: 0; transform: translateY(16px); transition: opacity .48s var(--ease), transform .48s var(--ease); }
+.js .reveal.is-visible { opacity: 1; transform: none; }
 
 @media (max-width: 900px) {
   .hero { grid-template-columns: 1fr; padding-top: 70px; }
@@ -307,7 +308,97 @@ h2 { max-width: 700px; margin: 10px 0 0; font-size: clamp(30px, 3.5vw, 46px); li
   .section { padding: 64px 0; }
   .hero { padding: 60px 0; }
 }
+/* Refinamiento de diseño: profundidad, respuesta y movimiento con propósito. */
+.nav { position: relative; z-index: 80; box-shadow: 0 12px 35px rgba(0, 0, 0, .10); }
+.nav-links a:not(.nav-cta) { position: relative; }
+.nav-links a:not(.nav-cta)::after {
+  content: ""; position: absolute; inset: auto 0 -4px; height: 2px;
+  border-radius: 2px; background: var(--blue); transform: scaleX(0);
+  transform-origin: center; transition: transform .2s var(--ease);
+}
+.nav-links a.is-current { color: var(--blue-soft); }
+.nav-links a.is-current:not(.nav-cta)::after { transform: scaleX(1); }
+.nav-links .nav-cta.is-current { background: #c0d7ff; }
+.menu-toggle, .lang-toggle { transition: transform .16s ease-out, background .2s ease-out, border-color .2s ease-out; }
+.btn, .project-links a, .contact-link { -webkit-tap-highlight-color: transparent; }
+.btn:active, .project-links a:active, .contact-link:active,
+.menu-toggle:active, .lang-toggle:active { transform: scale(.97); transition-duration: .13s; }
+
+.hero { position: relative; isolation: isolate; }
+.hero::before {
+  content: ""; position: absolute; z-index: -1; pointer-events: none;
+  inset: 0 -4% 0; opacity: .8;
+  background:
+    radial-gradient(ellipse at 71% 42%, rgba(64, 110, 238, .15), transparent 43%),
+    radial-gradient(circle, rgba(127, 171, 255, .22) .75px, transparent 1px);
+  background-size: auto, 28px 28px;
+  -webkit-mask-image: radial-gradient(ellipse 65% 70% at 70% 50%, #000, transparent);
+  mask-image: radial-gradient(ellipse 65% 70% at 70% 50%, #000, transparent);
+}
+.hero h1 em { text-shadow: 0 0 35px rgba(111, 163, 255, .14); }
+.id-card { isolation: isolate; overflow: hidden;
+  transition: transform .32s var(--ease), border-color .32s var(--ease), box-shadow .32s var(--ease);
+}
+.id-card::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: radial-gradient(ellipse at 50% -12%, rgba(111,163,255,.21), transparent 58%);
+}
+.id-card::after {
+  content: ""; position: absolute; top: 0; left: 15%; width: 70%; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(172,206,255,.8), transparent);
+}
+.id-photo { box-shadow: 0 0 0 7px rgba(111,163,255,.08), 0 16px 35px rgba(1,4,20,.34); }
+.project-card { position: relative; overflow: hidden; isolation: isolate; }
+.project-card::before {
+  content: ""; pointer-events: none; position: absolute; inset: 0; z-index: -1;
+  background: radial-gradient(ellipse at 82% 0%, rgba(111, 163, 255, .13), transparent 58%);
+  opacity: 0; transition: opacity .25s ease-out;
+}
+.project-card h3 { text-wrap: balance; }
+.project-gallery img { object-position: center top; }
+.project-links a:focus-visible, .contact-link:focus-visible { outline-offset: 4px; }
+.timeline::after {
+  content: ""; position: absolute; top: 6px; bottom: 6px; left: 3px; width: 3px;
+  border-radius: 3px; background: linear-gradient(var(--blue-soft), var(--blue-deep));
+  transform-origin: top center; transform: scaleY(var(--line-progress, 0));
+  box-shadow: 0 0 13px rgba(111, 163, 255, .30);
+  pointer-events: none;
+}
+.t-item::before { z-index: 2; transition: box-shadow .2s ease-out, background .2s ease-out; }
+.lightbox { opacity: 0; visibility: hidden; transition: opacity .22s ease-out, visibility 0s linear .22s; }
+.lightbox.is-open { opacity: 1; visibility: visible; transition-delay: 0s; }
+.lightbox-content { transform: translateY(12px) scale(.985);
+  transition: transform .22s cubic-bezier(.23, 1, .32, 1); }
+.lightbox.is-open .lightbox-content { transform: none; }
+body.lightbox-active { overflow: hidden; }
+@media (hover: hover) and (pointer: fine) {
+  .js .id-card.reveal.is-visible:hover {
+    transform: translateY(-5px); border-color: rgba(156,194,255,.67);
+    box-shadow: 0 30px 76px rgba(0,0,0,.36), 0 0 35px rgba(70,120,255,.08);
+  }
+  .project-card:hover::before { opacity: 1; }
+  .t-item:hover::before { background: var(--blue-soft); box-shadow: 0 0 0 5px rgba(111,163,255,.16), 0 0 16px rgba(111,163,255,.4); }
+}
+@media (max-width: 760px) {
+  .nav-links {
+    display: flex; z-index: 20; visibility: hidden; pointer-events: none; opacity: 0;
+    transform: translateY(-8px) scale(.98); transform-origin: top right;
+    transition: opacity .18s ease-out, transform .18s cubic-bezier(.23, 1, .32, 1),
+      visibility 0s linear .18s;
+    box-shadow: 0 18px 40px rgba(0,0,0,.30);
+  }
+  .nav-links.open { visibility: visible; pointer-events: auto; opacity: 1; transform: none; transition-delay: 0s; }
+  .nav-links a:not(.nav-cta)::after { display: none; }
+  .nav-links a.is-current:not(.nav-cta) { background: rgba(111, 163, 255, .10); }
+}
+@media (hover: none) {
+  .project-card:hover, .skill-card:hover, .rec-item:hover, .id-card:hover,
+  .about-note:hover, .lang-item:hover { transform: none; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
-  .reveal { opacity: 1; transform: none; }
+  .reveal, .js .reveal, .js .reveal.is-visible { opacity: 1; transform: none; }
+  .lightbox-content { transform: none; }
+  .timeline::after { transform: scaleY(1); }
 }
