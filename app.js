@@ -246,3 +246,66 @@ document.addEventListener("DOMContentLoaded", function () {
     document.head.appendChild(script);
   }
 });
+
+/* Progressive enhancement: subtle, accessible motion for the portfolio. */
+document.addEventListener("DOMContentLoaded", function () {
+  "use strict";
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const header = document.querySelector(".site-header");
+  const root = document.documentElement;
+  let scrollQueued = false;
+
+  function updateScrollState() {
+    scrollQueued = false;
+    const scrollTop = Math.max(0, window.scrollY || root.scrollTop);
+    const scrollable = Math.max(0, root.scrollHeight - window.innerHeight);
+    if (header) header.classList.toggle("is-scrolled", scrollTop > 12);
+    root.style.setProperty("--reading-progress",
+      scrollable > 0 ? String(Math.min(1, scrollTop / scrollable)) : "0");
+  }
+
+  function queueScrollUpdate() {
+    if (scrollQueued) return;
+    scrollQueued = true;
+    window.requestAnimationFrame(updateScrollState);
+  }
+  window.addEventListener("scroll", queueScrollUpdate, { passive: true });
+  window.addEventListener("resize", queueScrollUpdate, { passive: true });
+  updateScrollState();
+
+  if (reducedMotion.matches || !("IntersectionObserver" in window)) return;
+
+  const selectors = [
+    ".section-intro",
+    ".about-content",
+    ".timeline-item",
+    ".project-card",
+    ".skill-group",
+    ".milestone",
+    ".contact-box"
+  ];
+  const targets = [...document.querySelectorAll(selectors.join(", "))];
+  const observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("motion-shown");
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.08, rootMargin: "0px 0px -26px 0px" });
+
+  targets.forEach(function (element) {
+    const position = element.getBoundingClientRect();
+    // Content visible at first paint remains visible and accessible immediately.
+    if (position.top < window.innerHeight * 0.88) return;
+    element.classList.add("motion-enter");
+    if (element.classList.contains("project-card") || element.classList.contains("skill-group")) {
+      const siblings = element.parentElement
+        ? [...element.parentElement.children].filter((child) => child.matches(".project-card, .skill-group"))
+        : [];
+      const index = siblings.indexOf(element);
+      element.style.setProperty("--motion-delay", String(Math.max(0, index % 2) * 85) + "ms");
+    }
+    observer.observe(element);
+  });
+  root.classList.add("motion-ready");
+});
