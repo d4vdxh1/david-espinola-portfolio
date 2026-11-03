@@ -104,7 +104,7 @@
               <div class="ajac-preview-cards"><div><span>01</span><strong>Eventos</strong></div><div><span>02</span><strong>Galería</strong></div><div><span>03</span><strong>Noticias</strong></div></div>
             </div>
           </div>
-          <span class="visual-caption" data-en="ILLUSTRATIVE COMPOSITION">COMPOSICIÓN ILUSTRATIVA</span>
+          <span class="visual-caption" data-en="CONCEPT DESIGN · LIVE WEBSITE AVAILABLE">DISEÑO CONCEPTUAL · WEB REAL DISPONIBLE</span>
           <div class="project-visual-number">01 <span>/ 03</span></div>
         </div>
         <div class="project-content">
@@ -123,10 +123,25 @@
 
       <article class="project-card project-card--sigsol reveal">
         <div class="project-visual project-visual--sigsol">
-          <div class="project-gallery" role="group" aria-label="Capturas de SIGSOL">
-            <img src="img/sigsol-2.jpg" alt="Dashboard de SIGSOL con estadísticas y estados de solicitudes" loading="lazy" width="1000" height="492" />
-            <img src="img/sigsol-1.jpg" alt="Pantalla de inicio de sesión de SIGSOL" loading="lazy" width="1000" height="494" />
-            <img src="img/sigsol-3.jpg" alt="Formulario de nueva solicitud en SIGSOL" loading="lazy" width="977" height="877" />
+          <div class="showcase-gallery" data-gallery="sigsol" aria-label="Galería de capturas de SIGSOL" data-en-aria="SIGSOL screenshot gallery">
+            <button class="showcase-main" type="button" aria-label="Ampliar captura del panel de SIGSOL" data-en-aria="Enlarge SIGSOL dashboard screenshot">
+              <img class="showcase-main-image" src="img/sigsol-2.jpg" alt="Dashboard de SIGSOL con estadísticas y estados de solicitudes" width="1000" height="492" loading="lazy" />
+              <span class="showcase-expand"><svg class="icon" viewBox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5M3 3l6 6M21 3l-6 6M3 21l6-6M21 21l-6-6"/></svg><span data-en="View full size">Ver tamaño completo</span></span>
+            </button>
+            <div class="showcase-controls">
+              <div class="showcase-thumbs" role="group" aria-label="Elegir captura de SIGSOL" data-en-aria="Choose SIGSOL screenshot">
+                <button type="button" class="showcase-thumb is-active" aria-pressed="true"
+                  data-full="img/sigsol-2.jpg" data-alt-es="Dashboard de SIGSOL con estadísticas y estados de solicitudes" data-alt-en="SIGSOL dashboard with request statistics and statuses"
+                  aria-label="Mostrar panel principal" data-en-aria="Show dashboard"><img src="img/sigsol-2.jpg" alt="" loading="lazy" width="1000" height="492" /><span data-en="Dashboard">Panel</span></button>
+                <button type="button" class="showcase-thumb" aria-pressed="false"
+                  data-full="img/sigsol-1.jpg" data-alt-es="Pantalla de inicio de sesión de SIGSOL" data-alt-en="SIGSOL login screen"
+                  aria-label="Mostrar inicio de sesión" data-en-aria="Show login screen"><img src="img/sigsol-1.jpg" alt="" loading="lazy" width="1000" height="494" /><span data-en="Login">Acceso</span></button>
+                <button type="button" class="showcase-thumb" aria-pressed="false"
+                  data-full="img/sigsol-3.jpg" data-alt-es="Formulario de nueva solicitud en SIGSOL" data-alt-en="New support request form in SIGSOL"
+                  aria-label="Mostrar formulario de solicitud" data-en-aria="Show request form"><img src="img/sigsol-3.jpg" alt="" loading="lazy" width="977" height="877" /><span data-en="Request">Solicitud</span></button>
+              </div>
+              <span class="showcase-count" aria-live="polite">01 / 03</span>
+            </div>
           </div>
           <span class="visual-caption" data-en="REAL PRODUCT SCREENS">CAPTURAS DEL SISTEMA</span>
           <div class="project-visual-number">02 <span>/ 03</span></div>
@@ -147,13 +162,18 @@
 
       <article class="project-card project-card--heko reveal">
         <div class="project-visual project-visual--heko">
-          <div class="project-gallery project-gallery--heko" role="group" aria-label="Capturas y video de Heko Porã">
-            <img src="img/hekopora-1.jpg" alt="Dashboard de Heko Porã con estadísticas hospitalarias" loading="lazy" width="1000" height="561" />
-            <button class="gallery-video-trigger" type="button" data-video="video/hekopora-demo.mp4" data-poster="img/hekopora-1.jpg" aria-label="Reproducir video de Heko Porã" data-en-aria="Play Heko Porã video">
-              <img src="img/hekopora-1.jpg" alt="" loading="lazy" width="1000" height="561" />
-              <span class="play-icon" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M8 5v14l11-7z"/></svg></span>
-              <span class="video-label" data-en="WATCH DEMO">VER DEMO</span>
+          <div class="showcase-gallery showcase-gallery--heko" data-gallery="heko" aria-label="Captura y video de Heko Porã" data-en-aria="Heko Porã screenshot and demo video">
+            <button class="showcase-main" type="button" aria-label="Ampliar dashboard de Heko Porã" data-en-aria="Enlarge Heko Porã dashboard">
+              <img class="showcase-main-image" src="img/hekopora-1.jpg" alt="Dashboard de Heko Porã con turnos, consultas y gráficos" width="1000" height="561" loading="lazy" />
+              <span class="showcase-expand"><svg class="icon" viewBox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5M3 3l6 6M21 3l-6 6M3 21l6-6M21 21l-6-6"/></svg><span data-en="View full size">Ver tamaño completo</span></span>
             </button>
+            <div class="showcase-controls showcase-controls--heko">
+              <span class="showcase-help" data-en="Real system screenshot · Click to enlarge">Captura real · Hacé clic para ampliar</span>
+              <button class="gallery-video-trigger showcase-video" type="button" data-video="video/hekopora-demo.mp4" data-poster="img/hekopora-1.jpg"
+                aria-label="Reproducir demostración de Heko Porã" data-en-aria="Play Heko Porã demo video">
+                <span class="video-play" aria-hidden="true">▶</span><span data-en="Watch demo">Ver demostración</span>
+              </button>
+            </div>
           </div>
           <span class="visual-caption" data-en="REAL SCREENS + VIDEO">CAPTURAS + VIDEO REAL</span>
           <div class="project-visual-number">03 <span>/ 03</span></div>
@@ -168,7 +188,7 @@
             <div class="project-field"><dt data-en="My contribution">Mi aporte</dt><dd data-en="Frontend design, backend API integration, database modeling and validation.">Diseño frontend, integración de APIs, modelado de base de datos y validaciones.</dd></div>
           </dl>
           <ul class="project-stack" aria-label="Tecnologías"><li>HTML5</li><li>JavaScript</li><li>Bootstrap</li><li>Node.js</li><li>Sybase</li></ul>
-          <div class="project-action project-action--static"><span data-en="Academic project · Watch the demo">Proyecto académico · Mirá la demostración</span><span class="project-action-icon" aria-hidden="true">▶</span></div>
+          <div class="project-action project-action--static"><span data-en="Academic project · Screenshot and demo available">Proyecto académico · Captura y video disponibles</span><span class="project-action-icon" aria-hidden="true">↗</span></div>
         </div>
       </article>
     </div>
@@ -177,7 +197,7 @@
   <!-- Sobre mí -->
   <section class="section shell about-section" id="sobre-mi" aria-labelledby="about-title">
     <div class="about-statement reveal">
-      <p class="eyebrow" data-en="03 — ABOUT ME">03 — SOBRE MÍ</p>
+      <p class="eyebrow" data-en="02 — ABOUT ME">02 — SOBRE MÍ</p>
       <h2 id="about-title" data-en-html='People, systems and solutions that <em>work.</em>'>Personas, sistemas y soluciones que <em>funcionan.</em></h2>
       <p data-en="Advanced Systems Analysis student with hands-on experience in IT support, equipment maintenance and access management. I combine user contact with building solutions.">Estudiante avanzado de Análisis de Sistemas con experiencia aplicada en soporte informático, mantenimiento de equipos y gestión de accesos. Combino el contacto con usuarios con la construcción de soluciones.</p>
       <a class="btn btn-outline" href="#contacto"><span data-en="Let's talk">Conversemos</span> <svg class="icon sm" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
@@ -201,7 +221,7 @@
   <!-- Experiencia y formación -->
   <section class="section shell trajectory-section" id="trayectoria" aria-labelledby="trajectory-title">
     <div class="section-heading compact reveal">
-      <div><p class="eyebrow" data-en="04 — EXPERIENCE &amp; EDUCATION">04 — EXPERIENCIA Y FORMACIÓN</p><h2 id="trajectory-title" data-en-html='A path between <em>service and technology.</em>'>Una trayectoria entre <em>servicio y tecnología.</em></h2></div>
+      <div><p class="eyebrow" data-en="03 — EXPERIENCE &amp; EDUCATION">03 — EXPERIENCIA Y FORMACIÓN</p><h2 id="trajectory-title" data-en-html='A path between <em>service and technology.</em>'>Una trayectoria entre <em>servicio y tecnología.</em></h2></div>
       <p data-en="IT support experience, hands-on technical practice and ongoing studies in Systems Analysis.">Experiencia en soporte IT, práctica técnica y formación continua en Análisis de Sistemas.</p>
     </div>
     <div class="trajectory-columns">
@@ -272,7 +292,7 @@
   <!-- Habilidades -->
   <section class="section shell" id="habilidades" aria-labelledby="skills-title">
     <div class="section-heading compact reveal">
-      <div><p class="eyebrow" data-en="05 — EXPERTISE">05 — CONOCIMIENTOS</p><h2 id="skills-title" data-en-html='Tools to <em>solve.</em>'>Herramientas para <em>resolver.</em></h2></div>
+      <div><p class="eyebrow" data-en="04 — EXPERTISE">04 — CONOCIMIENTOS</p><h2 id="skills-title" data-en-html='Tools to <em>solve.</em>'>Herramientas para <em>resolver.</em></h2></div>
       <p data-en="Web development, data, IT support and business intelligence.">Desarrollo web, datos, soporte informático e inteligencia de negocios.</p>
     </div>
     <div class="skill-groups">
@@ -314,7 +334,7 @@
   <!-- Reconocimientos -->
   <section class="section shell" id="reconocimientos" aria-labelledby="recognitions-title">
     <div class="section-heading compact reveal">
-      <div><p class="eyebrow" data-en="06 — RECOGNITION">06 — RECONOCIMIENTOS</p><h2 id="recognitions-title" data-en-html='Learning and <em>merit.</em>'>Aprendizaje y <em>mérito.</em></h2></div>
+      <div><p class="eyebrow" data-en="05 — RECOGNITION">05 — RECONOCIMIENTOS</p><h2 id="recognitions-title" data-en-html='Learning and <em>merit.</em>'>Aprendizaje y <em>mérito.</em></h2></div>
       <p data-en="Recent participations and scholarships.">Participaciones y becas recientes.</p>
     </div>
     <div class="rec-list">
@@ -333,7 +353,7 @@
   <section class="section shell" id="contacto" style="padding-bottom: 76px" aria-labelledby="contact-title">
     <div class="contact-panel reveal">
       <div class="contact-copy">
-        <p class="eyebrow" data-en="07 — CONTACT">07 — CONTACTO</p>
+        <p class="eyebrow" data-en="06 — CONTACT">06 — CONTACTO</p>
         <h2 id="contact-title" data-en-html="Let&#39;s talk about the &lt;em&gt;next&lt;/em&gt; challenge?">¿Hablamos del <em>siguiente</em> desafío?</h2>
         <p data-en="Open to connecting about IT support, software development and technology projects.">Disponible para conectar sobre soporte informático, desarrollo de software y proyectos tecnológicos.</p>
         <a class="btn btn-primary" href="cv-nestor-espinola.pdf.pdf" download><span data-en="Download CV">Descargar CV</span> <svg class="icon sm" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg></a>
