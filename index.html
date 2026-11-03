@@ -50,7 +50,7 @@
     </div>
     <div class="hero-content reveal">
       <div class="hero-status">
-        <span class="availability-dot" aria-hidden="true"></span>
+        <span class="hero-status-mark" aria-hidden="true">✦</span>
         <span data-en="IT SUPPORT · SOFTWARE DEVELOPMENT">SOPORTE IT · DESARROLLO DE SOFTWARE</span>
       </div>
       <h1 id="hero-title" data-en-html='I build digital solutions <em>that work.</em>'>Construyo soluciones digitales <em>que funcionan.</em></h1>
@@ -100,7 +100,23 @@
               <div class="ajac-preview-cards"><div><span>01</span><strong>Eventos</strong></div><div><span>02</span><strong>Galería</strong></div><div><span>03</span><strong>Noticias</strong></div></div>
             </div>
           </div>
-          <span class="visual-caption" data-en="CONCEPT DESIGN · LIVE WEBSITE AVAILABLE">DISEÑO CONCEPTUAL · WEB REAL DISPONIBLE</span>
+          <!-- Se mostrará automáticamente cuando subas img/ajac-home.jpg.
+               Hasta entonces, permanece el diseño conceptual anterior. -->
+          <div class="showcase-gallery showcase-gallery--single ajac-real-gallery"
+               data-gallery="ajac" aria-label="Captura real de AJAC" data-en-aria="Real AJAC website screenshot">
+            <button class="showcase-main" type="button"
+                    aria-label="Ampliar captura real de AJAC" data-en-aria="Enlarge real AJAC screenshot">
+              <img class="showcase-main-image" data-ajac-screenshot src="img/ajac-home.jpg"
+                   alt="Portada real de AJAC NSPS: fotografía del grupo, presentación y botones de navegación"
+                   width="831" height="489" loading="lazy" />
+              <span class="showcase-expand">
+                <svg class="icon" viewBox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5M3 3l6 6M21 3l-6 6M3 21l6-6M21 21l-6-6"/></svg>
+                <span data-en="View full size">Ver tamaño completo</span>
+              </span>
+            </button>
+          </div>
+          <span class="visual-caption visual-caption--concept" data-en="ILLUSTRATIVE MOCKUP · ACTUAL IMAGE PENDING">MAQUETA ILUSTRATIVA · CAPTURA PENDIENTE</span>
+          <span class="visual-caption visual-caption--real" data-en="LIVE WEBSITE · ACTUAL SCREENSHOT">SITIO EN PRODUCCIÓN · CAPTURA REAL</span>
           <div class="project-visual-number">01 <span>/ 03</span></div>
         </div>
         <div class="project-content">
