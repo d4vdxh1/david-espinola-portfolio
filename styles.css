@@ -835,3 +835,41 @@ h2 em { color: #86c5ff; }
   .preview-browser, .project-gallery > img, .hero-stage, .project-card, .id-card { transition:none !important; }
   .timeline::after { transform:scaleY(1); }
 }
+
+
+/* Final motion layer: purposeful entrance choreography, not constant movement. */
+@media (prefers-reduced-motion: no-preference) {
+  .js .hero-copy.is-visible .hero-kicker,
+  .js .hero-copy.is-visible .hero-overline,
+  .js .hero-copy.is-visible h1,
+  .js .hero-copy.is-visible .hero-intro,
+  .js .hero-copy.is-visible .hero-summary,
+  .js .hero-copy.is-visible .hero-actions,
+  .js .hero-copy.is-visible .hero-metrics {
+    animation: hero-rise .7s cubic-bezier(.23,1,.32,1) both;
+  }
+  .js .hero-copy.is-visible .hero-overline { animation-delay:.06s; }
+  .js .hero-copy.is-visible h1 { animation-delay:.12s; }
+  .js .hero-copy.is-visible .hero-intro { animation-delay:.18s; }
+  .js .hero-copy.is-visible .hero-summary { animation-delay:.22s; }
+  .js .hero-copy.is-visible .hero-actions { animation-delay:.28s; }
+  .js .hero-copy.is-visible .hero-metrics { animation-delay:.35s; }
+  .js .hero-stage.is-visible .stage-photo-frame {
+    animation: photo-enter .9s cubic-bezier(.23,1,.32,1) .14s both;
+  }
+  @keyframes hero-rise {
+    from { opacity:0; transform:translateY(21px); }
+    to { opacity:1; transform:translateY(0); }
+  }
+  @keyframes photo-enter {
+    from { opacity:0; transform:translateY(13px) scale(.94); }
+    to { opacity:1; transform:none; }
+  }
+}
+@media (hover:hover) and (pointer:fine) {
+  .js .project-card.reveal.is-visible:hover {
+    transform:translateY(-6px);
+    border-color:rgba(133,217,243,.43);
+    box-shadow:0 27px 70px rgba(0,0,0,.30);
+  }
+}
