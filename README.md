@@ -14,7 +14,8 @@ Rediseño original con enfoque de currículum interactivo: tipografía clara, ex
 - Tema claro/oscuro, con preferencia guardada localmente y respeto al tema del dispositivo al entrar por primera vez.
 - Secciones de presentación, perfil, experiencia, proyectos, formación, habilidades, reconocimientos y contacto.
 - Tarjetas de proyectos con enlaces directos, estado y tecnologías.
-- Capturas reales para AJAC, SIGSOL y Heko Porã; galería y visor ampliado, más un video de Heko Porã.
+- Centro de Salud: captura del acceso, enlace al repositorio y demostración con autenticación; requiere una cuenta válida de Supabase Auth para ingresar.
+- Capturas reales para AJAC, SIGSOL, Heko Porã y Centro de Salud; galería y visor ampliado, más un video de Heko Porã.
 - Navegación adaptable, etiquetas accesibles y compatibilidad con movimiento reducido.
 - Metadatos estructurados para buscadores.
 
