@@ -16,7 +16,6 @@ const SITE_DATA = {
     { name: "PowerDesigner MCP", description: "Integración local de PowerDesigner con ChatGPT, Python y COM.", url: "https://github.com/d4vdxh1/powerdesigner-mcp" },
     { name: "Día a Día", description: "Aplicación personal para hábitos, objetivos y diario, en desarrollo.", url: "https://github.com/d4vdxh1/personal-ia" },
     { name: "Heko Porã", description: "Proyecto académico de agendamiento y atención sanitaria.", url: "" },
-    { name: "Centro de Salud", description: "Demo académica de gestión sanitaria con Supabase Auth y módulos de pacientes y turnos.", url: "https://d4vdxh1.github.io/CentroDeSalud_/login/login.html" },
-    { name: "Portfolio", description: "Portafolio profesional bilingüe publicado en GitHub Pages.", url: "https://d4vdxh1.github.io/david-espinola-portfolio/" }
+    { name: "Centro de Salud", description: "Demo académica de gestión sanitaria con Supabase Auth y módulos de pacientes y turnos.", url: "https://d4vdxh1.github.io/CentroDeSalud_/login/login.html" }
   ]
 };
